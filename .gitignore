@@ -1,0 +1,7 @@
+.DS_Store
+.idea/
+.deploy*
+*.log
+yarn.lock
+themes/*
+!themes/README.md
