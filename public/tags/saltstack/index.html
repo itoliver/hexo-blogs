@@ -92,7 +92,7 @@
 
 
 
-  <meta name="keywords" content="docker,linux自动化运维,redis," />
+  <meta name="keywords" content="linux, NexT, Hexo, shell, docker, 博客, oliver, 自动化, 运维, nginx, php, mysql" />
 
 
 
@@ -105,18 +105,17 @@
 
 
 
-<meta name="description" content="前言Redis是一个开源的使用ANSI C语言编写、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。从2010年3月15日起，Redis的开发工作由VMware主持。从2013年5月开始，Redis的开发由Pivotal赞助。此文只要是针对基于docker部署redis集群，实现主从同步">
-<meta name="keywords" content="docker,linux自动化运维,redis">
-<meta property="og:type" content="article">
-<meta property="og:title" content="docker-redis集群">
-<meta property="og:url" content="http://itpai.top/2018/04/08/docker-redis集群/index.html">
+<meta name="description" content="IT界，改变以光速进行着。昨天，盖茨、乔布斯还是众多人的励志偶像，今天扎克伯格就成为更多年轻人追求美国梦的目标。但，他们只是IT男中的佼佼者，而在芸芸众生里还隐藏着各种各样的普通IT男，他们就在你触手可及的地方。">
+<meta name="keywords" content="IT, 运维, blog, 博客, oliver, shell, nginx, 系统, mysql, php, 技术, oliver blog, 问题">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Oliver&#39;s Blog">
+<meta property="og:url" content="http://itpai.top/tags/saltstack/index.html">
 <meta property="og:site_name" content="Oliver&#39;s Blog">
-<meta property="og:description" content="前言Redis是一个开源的使用ANSI C语言编写、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。从2010年3月15日起，Redis的开发工作由VMware主持。从2013年5月开始，Redis的开发由Pivotal赞助。此文只要是针对基于docker部署redis集群，实现主从同步">
+<meta property="og:description" content="IT界，改变以光速进行着。昨天，盖茨、乔布斯还是众多人的励志偶像，今天扎克伯格就成为更多年轻人追求美国梦的目标。但，他们只是IT男中的佼佼者，而在芸芸众生里还隐藏着各种各样的普通IT男，他们就在你触手可及的地方。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-09T05:51:04.949Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="docker-redis集群">
-<meta name="twitter:description" content="前言Redis是一个开源的使用ANSI C语言编写、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。从2010年3月15日起，Redis的开发工作由VMware主持。从2013年5月开始，Redis的开发由Pivotal赞助。此文只要是针对基于docker部署redis集群，实现主从同步">
+<meta name="twitter:title" content="Oliver&#39;s Blog">
+<meta name="twitter:description" content="IT界，改变以光速进行着。昨天，盖茨、乔布斯还是众多人的励志偶像，今天扎克伯格就成为更多年轻人追求美国梦的目标。但，他们只是IT男中的佼佼者，而在芸芸众生里还隐藏着各种各样的普通IT男，他们就在你触手可及的地方。">
 
 
 
@@ -146,13 +145,13 @@
 
 
 
-  <link rel="canonical" href="http://itpai.top/2018/04/08/docker-redis集群/"/>
+  <link rel="canonical" href="http://itpai.top/tags/saltstack/"/>
 
 
 
 
 
-  <title>docker-redis集群 | Oliver's Blog</title>
+  <title>标签: saltstack | Oliver's Blog</title>
   
 
 
@@ -191,7 +190,7 @@
   
 
 
- <div class="container sidebar-position-left page-post-detail">
+ <div class="container sidebar-position-left ">
     <div class="headband"></div>
     <a href="https://github.com/itoliver/itoliver.github.io"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
 
@@ -330,441 +329,54 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-expand">
-    
+  
+  
+  
+  <div class="post-block tag">
 
-  
+    <div id="posts" class="posts-collapse">
+      <div class="collection-title">
+        <h1>saltstack<small>标签</small>
+        </h1>
+      </div>
 
-  
-  
-  
+      
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://itpai.top/2018/04/08/docker-redis集群/">
+    <header class="post-header">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Oliver">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/blog-logo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Oliver's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
+      <h2 class="post-title">
         
+            <a class="post-title-link" href="/2018/04/11/centos7-install-saltstack/" itemprop="url">
+              
+                <span itemprop="name">centos7部署saltstack自动化平台</span>
+              
+            </a>
         
-          <h1 class="post-title" itemprop="name headline">docker-redis集群</h1>
-        
+      </h2>
 
-        <div class="post-meta">
-            
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-08T11:16:46+08:00">
-                2018-04-08
-              </time>
-            
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2018-04-11T16:14:54+08:00"
+              content="2018-04-11" >
+          04-11
+        </time>
+      </div>
 
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/dockers/" itemprop="url" rel="index">
-                    <span itemprop="name">dockers</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/04/08/docker-redis集群/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/04/08/docker-redis集群/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  872
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  5
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <p>前言<br>Redis是一个开源的使用ANSI C语言编写、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。从2010年3月15日起，Redis的开发工作由VMware主持。从2013年5月开始，Redis的开发由Pivotal赞助。<br>此文只要是针对基于docker部署redis集群，实现主从同步<br><a id="more"></a><br>master    192.168.1.14<br>slave    192.168.1.15</p>
-<h2 id="master操作"><a href="#master操作" class="headerlink" title="master操作"></a>master操作</h2><h1 id="1-创建数据文件"><a href="#1-创建数据文件" class="headerlink" title="1.创建数据文件"></a>1.创建数据文件</h1><pre><code>mkdir /opt/redis
-</code></pre><h1 id="2-拉取redis镜像"><a href="#2-拉取redis镜像" class="headerlink" title="2.拉取redis镜像"></a>2.拉取redis镜像</h1><pre><code>docker pull benyoo/redis:3.2.5
-</code></pre><h1 id="3-配置redis文件"><a href="#3-配置redis文件" class="headerlink" title="3.配置redis文件"></a>3.配置redis文件</h1><pre><code>echo &#39;bind 0.0.0.0
-protected-mode yes
-port 6379
-tcp-backlog 511
-timeout 0
-tcp-keepalive 300
-daemonize no
-supervised no
-pidfile /var/run/redis_6379.pid
-loglevel notice
-logfile &quot;&quot;
-databases 8
-save 900 1
-save 300 10
-save 60 10000
-stop-writes-on-bgsave-error yes
-rdbcompression yes
-rdbchecksum yes
-dbfilename dump.rdb
-dir /data/redis
-slave-serve-stale-data yes
-slave-read-only yes
-repl-diskless-sync no
-repl-diskless-sync-delay 5
-repl-disable-tcp-nodelay no
-slave-priority 100
-appendonly no
-appendfilename &quot;appendonly.aof&quot;
-appendfsync everysec
-no-appendfsync-on-rewrite no
-auto-aof-rewrite-percentage 100
-auto-aof-rewrite-min-size 64mb
-aof-load-truncated yes
-lua-time-limit 5000
-slowlog-log-slower-than 10000
-slowlog-max-len 128
-latency-monitor-threshold 0
-notify-keyspace-events &quot;&quot;
-hash-max-ziplist-entries 512
-hash-max-ziplist-value 64
-list-max-ziplist-size -2
-list-compress-depth 0
-set-max-intset-entries 512
-zset-max-ziplist-entries 128
-zset-max-ziplist-value 64
-hll-sparse-max-bytes 3000
-activerehashing yes
-client-output-buffer-limit normal 0 0 0
-client-output-buffer-limit slave 256mb 64mb 60
-client-output-buffer-limit pubsub 32mb 8mb 60
-hz 10
-aof-rewrite-incremental-fsync yes
-
-masterauth ZDU0NTlkNDY5NWZi
-requirepass ZDU0NTlkNDY5NWZi&#39; &gt;/opt/redis/redis.conf
-</code></pre><h1 id="4-配置防火墙"><a href="#4-配置防火墙" class="headerlink" title="4.配置防火墙"></a>4.配置防火墙</h1><pre><code>iptables -I INPUT 5 -p tcp -m state --state NEW -m tcp -m comment --comment &quot;REDIS_SERVER&quot; -m multiport --dports 6379 -j ACCEPT
-iptables -nvxL --lin
-</code></pre><h1 id="5-启动redis容器"><a href="#5-启动redis容器" class="headerlink" title="5.启动redis容器"></a>5.启动redis容器</h1><pre><code>docker run -d \
---privileged=true \
---name redis-master \
---restart=always \
--p 6379:6379
--v /opt/redis/redis.conf:/etc/redis.conf \
--v /etc/localtime:/etc/localtime \
-benyoo/redis:3.2.5
-</code></pre><h2 id="slave上操作"><a href="#slave上操作" class="headerlink" title="slave上操作"></a>slave上操作</h2><h1 id="1-创建数据文件-1"><a href="#1-创建数据文件-1" class="headerlink" title="1.创建数据文件"></a>1.创建数据文件</h1><pre><code>mkdir /opt/redis
-</code></pre><p>2.拉取redis镜像</p>
-<pre><code>docker pull benyoo/redis:3.2.5
-</code></pre><p>3.配置redis文件</p>
-<pre><code>echo &#39;bind 0.0.0.0
-protected-mode yes
-port 6379
-tcp-backlog 511
-timeout 0
-tcp-keepalive 300
-daemonize no
-supervised no
-pidfile /var/run/redis_6379.pid
-loglevel notice
-logfile &quot;&quot;
-databases 8
-save 900 1
-save 300 10
-save 60 10000
-stop-writes-on-bgsave-error yes
-rdbcompression yes
-rdbchecksum yes
-dbfilename dump.rdb
-dir /data/redis
-slave-serve-stale-data yes
-slave-read-only yes
-repl-diskless-sync no
-repl-diskless-sync-delay 5
-repl-disable-tcp-nodelay no
-slave-priority 100
-appendonly no
-appendfilename &quot;appendonly.aof&quot;
-appendfsync everysec
-no-appendfsync-on-rewrite no
-auto-aof-rewrite-percentage 100
-auto-aof-rewrite-min-size 64mb
-aof-load-truncated yes
-lua-time-limit 5000
-slowlog-log-slower-than 10000
-slowlog-max-len 128
-latency-monitor-threshold 0
-notify-keyspace-events &quot;&quot;
-hash-max-ziplist-entries 512
-hash-max-ziplist-value 64
-list-max-ziplist-size -2
-list-compress-depth 0
-set-max-intset-entries 512
-zset-max-ziplist-entries 128
-zset-max-ziplist-value 64
-hll-sparse-max-bytes 3000
-activerehashing yes
-client-output-buffer-limit normal 0 0 0
-client-output-buffer-limit slave 256mb 64mb 60
-client-output-buffer-limit pubsub 32mb 8mb 60
-hz 10
-aof-rewrite-incremental-fsync yes
-
-slaveof 192.168.1.14 6379
-masterauth ZDU0NTlkNDY5NWZi
-requirepass ZDU0NTlkNDY5NWZi&#39; &gt;/opt/redis/redis.conf
-</code></pre><h1 id="4-配置防火墙-1"><a href="#4-配置防火墙-1" class="headerlink" title="4.配置防火墙"></a>4.配置防火墙</h1><pre><code>iptables -I INPUT 5 -p tcp -m state --state NEW -m tcp -m comment --comment &quot;REDIS_SERVER&quot; -m multiport --dports 6379 -j ACCEPT
-iptables -nvxL --lin
-</code></pre><h1 id="5-启动redis容器-1"><a href="#5-启动redis容器-1" class="headerlink" title="5.启动redis容器"></a>5.启动redis容器</h1><pre><code>docker run -d \
---privileged=true \
---name redis-slave \
---restart=always \
--p 6379:6379
--v /opt/redis/redis.conf:/opt/redis/redis.conf \
--v /etc/localtime:/etc/localtime \
-benyoo/redis:3.2.5
-</code></pre><h1 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h1><pre><code>docker exec -it redis redis-cli -h 192.168.1.15 -a ZDU0NTlkNDY5NWZi info replication
-# Replication
-role:slave
-master_host:192.168.1.14
-master_port:6379
-master_link_status:up
-master_last_io_seconds_ago:9
-master_sync_in_progress:0
-slave_repl_offset:281
-slave_priority:100
-slave_read_only:1
-connected_slaves:0
-master_repl_offset:0
-repl_backlog_active:0
-repl_backlog_size:1048576
-repl_backlog_first_byte_offset:0
-repl_backlog_histlen:0
-</code></pre><pre><code>docker exec -it redis redis-cli -h 192.168.1.14 -a ZDU0NTlkNDY5NWZi info replication 
-# Replication
-role:master
-connected_slaves:1
-slave0:ip=192.168.1.15,port=6379,state=online,offset=295,lag=1
-master_repl_offset:295
-repl_backlog_active:1
-repl_backlog_size:1048576
-repl_backlog_first_byte_offset:2
-repl_backlog_histlen:294
-</code></pre><pre><code>docker exec -it redis redis-cli -h 192.168.1.14 -a ZDU0NTlkNDY5NWZi set Test_Write_key www.shangtv.cn         #创建数据
-OK
-</code></pre><pre><code>docker exec -it redis redis-cli -h 192.168.1.14 -a ZDU0NTlkNDY5NWZi get Test_Write_key 
-www.shangtv.cn
-</code></pre>
-      
-    </div>
-    
-    
-    
-
-    <div>
-      
-        
-      
-    </div>
-
-    
-
-    
-
-    
-
-<div>
-  
-    <div>
-    
-        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
-    
-</div
-  
-</div>
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/docker/" rel="tag"># docker</a>
-          
-            <a href="/tags/linux自动化运维/" rel="tag"># linux自动化运维</a>
-          
-            <a href="/tags/redis/" rel="tag"># redis</a>
-          
-        </div>
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2018/04/08/registry-v2搭建/" rel="next" title="registry v2搭建">
-                <i class="fa fa-chevron-left"></i> registry v2搭建
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/04/08/docker-swarm集群/" rel="prev" title="docker_swarm集群">
-                docker_swarm集群 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </div>
-  
-  
-  
+    </header>
   </article>
 
 
-
-    <div class="post-spread">
-      
-        
-  <div class="bdsharebuttonbox">
-    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
-    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
-    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
-    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
-    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
-    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
-    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
-    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
-    <a href="#" class="bds_more" data-cmd="more"></a>
-    <a class="bds_count" data-cmd="count"></a>
-  </div>
-  <script>
-    window._bd_share_config = {
-      "common": {
-        "bdText": "",
-        "bdMini": "2",
-        "bdMiniList": false,
-        "bdPic": ""
-      },
-      "share": {
-        "bdSize": "16",
-        "bdStyle": "0"
-      },
-      "image": {
-        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
-        "viewText": "分享到：",
-        "viewSize": "16"
-      }
-    }
-  </script>
-
-<script>
-  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
-</script>
-
       
     </div>
+
   </div>
+  
+  
+  
+
+  
 
 
           </div>
@@ -772,13 +384,6 @@ www.shangtv.cn
 
 
           
-
-  
-    <div class="comments" id="comments">
-    </div>
-  
-
-
 
         </div>
         
@@ -799,17 +404,8 @@ www.shangtv.cn
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -908,22 +504,6 @@ www.shangtv.cn
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#master操作"><span class="nav-number">1.</span> <span class="nav-text">master操作</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-创建数据文件"><span class="nav-number"></span> <span class="nav-text">1.创建数据文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-拉取redis镜像"><span class="nav-number"></span> <span class="nav-text">2.拉取redis镜像</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-配置redis文件"><span class="nav-number"></span> <span class="nav-text">3.配置redis文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-配置防火墙"><span class="nav-number"></span> <span class="nav-text">4.配置防火墙</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-启动redis容器"><span class="nav-number"></span> <span class="nav-text">5.启动redis容器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#slave上操作"><span class="nav-number">1.</span> <span class="nav-text">slave上操作</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-创建数据文件-1"><span class="nav-number"></span> <span class="nav-text">1.创建数据文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-配置防火墙-1"><span class="nav-number"></span> <span class="nav-text">4.配置防火墙</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-启动redis容器-1"><span class="nav-number"></span> <span class="nav-text">5.启动redis容器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#测试"><span class="nav-number"></span> <span class="nav-text">测试</span></a></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
@@ -1076,10 +656,6 @@ www.shangtv.cn
 
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
-
-
 
   
 

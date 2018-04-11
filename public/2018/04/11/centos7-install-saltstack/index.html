@@ -92,7 +92,7 @@
 
 
 
-  <meta name="keywords" content="docker,linux自动化运维,redis," />
+  <meta name="keywords" content="linux自动化运维,shell,linxu,saltstack," />
 
 
 
@@ -105,18 +105,18 @@
 
 
 
-<meta name="description" content="前言Redis是一个开源的使用ANSI C语言编写、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。从2010年3月15日起，Redis的开发工作由VMware主持。从2013年5月开始，Redis的开发由Pivotal赞助。此文只要是针对基于docker部署redis集群，实现主从同步">
-<meta name="keywords" content="docker,linux自动化运维,redis">
+<meta name="description" content="SaltStack是(C/S)架构的集中化管理平台，SaltStack基于Python语言，采用zeromq消息队列进行通信(tcp,ipc)。">
+<meta name="keywords" content="linux自动化运维,shell,linxu,saltstack">
 <meta property="og:type" content="article">
-<meta property="og:title" content="docker-redis集群">
-<meta property="og:url" content="http://itpai.top/2018/04/08/docker-redis集群/index.html">
+<meta property="og:title" content="centos7部署saltstack自动化平台">
+<meta property="og:url" content="http://itpai.top/2018/04/11/centos7-install-saltstack/index.html">
 <meta property="og:site_name" content="Oliver&#39;s Blog">
-<meta property="og:description" content="前言Redis是一个开源的使用ANSI C语言编写、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。从2010年3月15日起，Redis的开发工作由VMware主持。从2013年5月开始，Redis的开发由Pivotal赞助。此文只要是针对基于docker部署redis集群，实现主从同步">
+<meta property="og:description" content="SaltStack是(C/S)架构的集中化管理平台，SaltStack基于Python语言，采用zeromq消息队列进行通信(tcp,ipc)。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-09T05:51:04.949Z">
+<meta property="og:updated_time" content="2018-04-11T08:50:50.324Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="docker-redis集群">
-<meta name="twitter:description" content="前言Redis是一个开源的使用ANSI C语言编写、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。从2010年3月15日起，Redis的开发工作由VMware主持。从2013年5月开始，Redis的开发由Pivotal赞助。此文只要是针对基于docker部署redis集群，实现主从同步">
+<meta name="twitter:title" content="centos7部署saltstack自动化平台">
+<meta name="twitter:description" content="SaltStack是(C/S)架构的集中化管理平台，SaltStack基于Python语言，采用zeromq消息队列进行通信(tcp,ipc)。">
 
 
 
@@ -146,13 +146,13 @@
 
 
 
-  <link rel="canonical" href="http://itpai.top/2018/04/08/docker-redis集群/"/>
+  <link rel="canonical" href="http://itpai.top/2018/04/11/centos7-install-saltstack/"/>
 
 
 
 
 
-  <title>docker-redis集群 | Oliver's Blog</title>
+  <title>centos7部署saltstack自动化平台 | Oliver's Blog</title>
   
 
 
@@ -344,7 +344,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://itpai.top/2018/04/08/docker-redis集群/">
+    <link itemprop="mainEntityOfPage" href="http://itpai.top/2018/04/11/centos7-install-saltstack/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Oliver">
@@ -361,7 +361,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">docker-redis集群</h1>
+          <h1 class="post-title" itemprop="name headline">centos7部署saltstack自动化平台</h1>
         
 
         <div class="post-meta">
@@ -374,8 +374,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-08T11:16:46+08:00">
-                2018-04-08
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-11T16:14:54+08:00">
+                2018-04-11
               </time>
             
 
@@ -397,8 +397,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/dockers/" itemprop="url" rel="index">
-                    <span itemprop="name">dockers</span>
+                  <a href="/categories/Linux自动化建设/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux自动化建设</span>
                   </a>
                 </span>
 
@@ -415,8 +415,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/04/08/docker-redis集群/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/04/08/docker-redis集群/" itemprop="commentCount"></span>
+                <a href="/2018/04/11/centos7-install-saltstack/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/04/11/centos7-install-saltstack/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -438,7 +438,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  872
+                  869
                 </span>
               
 
@@ -461,6 +461,10 @@
           
 
           
+              <div class="post-description">
+                  SaltStack是(C/S)架构的集中化管理平台，SaltStack基于Python语言，采用zeromq消息队列进行通信(tcp,ipc)。
+              </div>
+          
 
         </div>
       </header>
@@ -475,176 +479,63 @@
       
 
       
-        <p>前言<br>Redis是一个开源的使用ANSI C语言编写、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。从2010年3月15日起，Redis的开发工作由VMware主持。从2013年5月开始，Redis的开发由Pivotal赞助。<br>此文只要是针对基于docker部署redis集群，实现主从同步<br><a id="more"></a><br>master    192.168.1.14<br>slave    192.168.1.15</p>
-<h2 id="master操作"><a href="#master操作" class="headerlink" title="master操作"></a>master操作</h2><h1 id="1-创建数据文件"><a href="#1-创建数据文件" class="headerlink" title="1.创建数据文件"></a>1.创建数据文件</h1><pre><code>mkdir /opt/redis
-</code></pre><h1 id="2-拉取redis镜像"><a href="#2-拉取redis镜像" class="headerlink" title="2.拉取redis镜像"></a>2.拉取redis镜像</h1><pre><code>docker pull benyoo/redis:3.2.5
-</code></pre><h1 id="3-配置redis文件"><a href="#3-配置redis文件" class="headerlink" title="3.配置redis文件"></a>3.配置redis文件</h1><pre><code>echo &#39;bind 0.0.0.0
-protected-mode yes
-port 6379
-tcp-backlog 511
-timeout 0
-tcp-keepalive 300
-daemonize no
-supervised no
-pidfile /var/run/redis_6379.pid
-loglevel notice
-logfile &quot;&quot;
-databases 8
-save 900 1
-save 300 10
-save 60 10000
-stop-writes-on-bgsave-error yes
-rdbcompression yes
-rdbchecksum yes
-dbfilename dump.rdb
-dir /data/redis
-slave-serve-stale-data yes
-slave-read-only yes
-repl-diskless-sync no
-repl-diskless-sync-delay 5
-repl-disable-tcp-nodelay no
-slave-priority 100
-appendonly no
-appendfilename &quot;appendonly.aof&quot;
-appendfsync everysec
-no-appendfsync-on-rewrite no
-auto-aof-rewrite-percentage 100
-auto-aof-rewrite-min-size 64mb
-aof-load-truncated yes
-lua-time-limit 5000
-slowlog-log-slower-than 10000
-slowlog-max-len 128
-latency-monitor-threshold 0
-notify-keyspace-events &quot;&quot;
-hash-max-ziplist-entries 512
-hash-max-ziplist-value 64
-list-max-ziplist-size -2
-list-compress-depth 0
-set-max-intset-entries 512
-zset-max-ziplist-entries 128
-zset-max-ziplist-value 64
-hll-sparse-max-bytes 3000
-activerehashing yes
-client-output-buffer-limit normal 0 0 0
-client-output-buffer-limit slave 256mb 64mb 60
-client-output-buffer-limit pubsub 32mb 8mb 60
-hz 10
-aof-rewrite-incremental-fsync yes
+        <h2 id="部署环境"><a href="#部署环境" class="headerlink" title="部署环境"></a>部署环境</h2><p>系统：centos7.3<br>centos7默认防火墙是firewall，修改为iptables(方法自行百度)<br>salt-master:192.168.1.100<br>salt-minion-1:192.168.1.200<br>salt-minion-2:192.168.1.300</p>
+<h1 id="master部署"><a href="#master部署" class="headerlink" title="master部署"></a>master部署</h1><h1 id="1-1-查看centos的版本和内核版本以及安装配置阿里云yum源"><a href="#1-1-查看centos的版本和内核版本以及安装配置阿里云yum源" class="headerlink" title="1.1 查看centos的版本和内核版本以及安装配置阿里云yum源"></a>1.1 查看centos的版本和内核版本以及安装配置阿里云yum源</h1><pre><code>cat /etc/redhat-release
+CentOS Linux release 7.3.1611 (Core)
+#wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo
+</code></pre><h1 id="1-2-安装epel-release和salt-master工具包"><a href="#1-2-安装epel-release和salt-master工具包" class="headerlink" title="1.2 安装epel-release和salt-master工具包"></a>1.2 安装epel-release和salt-master工具包</h1><pre><code>yum install epel-release -y
+yum install salt-master -y
+</code></pre><h1 id="1-3-配置saltstatck开机自启动服务"><a href="#1-3-配置saltstatck开机自启动服务" class="headerlink" title="1.3 配置saltstatck开机自启动服务"></a>1.3 配置saltstatck开机自启动服务</h1><pre><code>systemctl enable salt-master.service
+</code></pre><h1 id="1-4-启动saltstack-master服务"><a href="#1-4-启动saltstack-master服务" class="headerlink" title="1.4 启动saltstack master服务"></a>1.4 启动saltstack master服务</h1><pre><code>systemctl start salt-master
+</code></pre><h1 id="1-5-检查saltstack端口及进程的运行状态"><a href="#1-5-检查saltstack端口及进程的运行状态" class="headerlink" title="1.5 检查saltstack端口及进程的运行状态"></a>1.5 检查saltstack端口及进程的运行状态</h1><ul>
+<li>4505是saltstack管理服务器发送命令消息的端口，4506是消息返回时所用的端口，saltstack一般是启动多个进程并发工作的<br><code>`</code>netstat -ntlp|grep python<br>tcp 0 0 120.76.40.16:4505 0.0.0.0:<em> LISTEN 4916/python<br>tcp 0 0 120.76.40.16:4506 0.0.0.0:</em> LISTEN 4936/python<pre><code>
+</code></pre>ps -aux |grep salt-master|grep -v grep<br>root 4906 0.0 0.0 314468 27816 ? Ss 10:47 0:00 /usr/bin/python /usr/bin/salt-master<br>root 4915 0.3 0.1 414628 37948 ? Sl 10:47 0:36 /usr/bin/python /usr/bin/salt-master<br>root 4916 0.0 0.0 396528 23580 ? Sl 10:47 0:00 /usr/bin/python /usr/bin/salt-master<br>root 4917 0.0 0.0 396528 25920 ? Sl 10:47 0:00 /usr/bin/python /usr/bin/salt-master<br>root 4920 0.0 0.0 314468 22936 ? S 10:47 0:00 /usr/bin/python /usr/bin/salt-master<br>root 4923 0.0 0.0 1057776 32016 ? Sl 10:47 0:01 /usr/bin/python /usr/bin/salt-master<br>root 4924 0.0 0.1 1205240 34072 ? Sl 10:47 0:01 /usr/bin/python /usr/bin/salt-master<br>root 4928 0.0 0.1 1205976 34252 ? Sl 10:47 0:01 /usr/bin/python /usr/bin/salt-master<br>root 4931 0.0 0.1 1206252 34200 ? Sl 10:47 0:01 /usr/bin/python /usr/bin/salt-master<br>root 4933 0.0 0.0 1057964 32280 ? Sl 10:47 0:01 /usr/bin/python /usr/bin/salt-master<br>root 4936 0.0 0.0 691476 23472 ? Sl 10:47 0:00 /usr/bin/python /usr/bin/salt-master<pre><code># 1.6 配置iptables防火墙)（ps：注意selinux状态，阿里云服务器默认是disabled）
+</code></pre>vim /etc/systconfig/iptables加入两行<br>-A INPUT -p tcp -m state –state NEW -m tcp –dport 4505 -j ACCEPT<br>-A INPUT -p tcp -m state –state NEW -m tcp –dport 4506 -j ACCEPT<pre><code>
+</code></pre>systemctl restart iptables<pre><code># 配置salt-minion
+# 2.1 查看centos的版本和内核版本以及安装配置阿里云yum源
+```cat /etc/redhat-release
+CentOS Linux release 7.3.1611 (Core)
+</code></pre>安装centos7 yum源<pre><code>wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo
+</code></pre><h1 id="2-2-安装epel-release和salt-minion工具包"><a href="#2-2-安装epel-release和salt-minion工具包" class="headerlink" title="2.2 安装epel-release和salt-minion工具包"></a>2.2 安装epel-release和salt-minion工具包</h1><pre><code>yum install epel-release -y
+yum install salt-minion -y
+</code></pre><h1 id="2-3-配置minion配置"><a href="#2-3-配置minion配置" class="headerlink" title="2.3 配置minion配置"></a>2.3 配置minion配置</h1>master参数指定master 的ip (或者主机名)，必配参数，如果minion启动时不能解析到master 主机，启动会失败；<pre><code>sed -i &#39;s/#master: salt/master: 192.168.1.100/g&#39; /etc/salt/minion
+</code></pre>id参数设置salt-minion名，默认未设置，minio名取主机hostname中设定的主机名<pre><code>sed -i &#39;s/#id:/id: 192.168.200/g&#39; /etc/salt/minion
+</code></pre><h1 id="2-4-配置saltstatck开机自启动服务"><a href="#2-4-配置saltstatck开机自启动服务" class="headerlink" title="2.4 配置saltstatck开机自启动服务"></a>2.4 配置saltstatck开机自启动服务</h1><pre><code>systemctl enable salt-minion
+</code></pre><h1 id="2-5-启动saltstack-minion服务"><a href="#2-5-启动saltstack-minion服务" class="headerlink" title="2.5 启动saltstack minion服务"></a>2.5 启动saltstack minion服务</h1><pre><code>systemctl start salt-minion
+</code></pre><h1 id="其他minion同样配置"><a href="#其他minion同样配置" class="headerlink" title="其他minion同样配置"></a>其他minion同样配置</h1><h1 id="saltstack具体操作"><a href="#saltstack具体操作" class="headerlink" title="saltstack具体操作"></a>saltstack具体操作</h1><pre><code>salt-key -L                                #查看salt-key
+Accepted Keys:
+salt-minion-01
+salt-minion-02
+Denied Keys:
+Unaccepted Keys:
+Rejected Keys:
+</code></pre><pre><code>salt-key -A -y                      #添加salt-key
+The following keys are going to be accepted:
+Unaccepted Keys:
+salt-minion-01
+salt-minion-02
+Key for minion salt-minion-01 accepted.
+Key for minion salt-minion-02 accepted.
+</code></pre><pre><code>salt-key -L                                #查看salt-key
+Accepted Keys:
+salt-minion-01
+salt-minion-02
+Denied Keys:
+Unaccepted Keys:
+Rejected Keys:
+</code></pre><pre><code>salt salt-minion* test.ping        #简单测试
+salt-minion-01:
+  True
+salt-minion-02:
+  True
+</code></pre><pre><code>salt salt-minion* cmd.run &#39;uname -r&#39;        #运行linux命令
+salt-minion-01:
+  3.10.0-327.el7.x86_64
+salt-minion-02:
+  3.10.0-327.el7.x86_64
+</code></pre></li>
+</ul>
 
-masterauth ZDU0NTlkNDY5NWZi
-requirepass ZDU0NTlkNDY5NWZi&#39; &gt;/opt/redis/redis.conf
-</code></pre><h1 id="4-配置防火墙"><a href="#4-配置防火墙" class="headerlink" title="4.配置防火墙"></a>4.配置防火墙</h1><pre><code>iptables -I INPUT 5 -p tcp -m state --state NEW -m tcp -m comment --comment &quot;REDIS_SERVER&quot; -m multiport --dports 6379 -j ACCEPT
-iptables -nvxL --lin
-</code></pre><h1 id="5-启动redis容器"><a href="#5-启动redis容器" class="headerlink" title="5.启动redis容器"></a>5.启动redis容器</h1><pre><code>docker run -d \
---privileged=true \
---name redis-master \
---restart=always \
--p 6379:6379
--v /opt/redis/redis.conf:/etc/redis.conf \
--v /etc/localtime:/etc/localtime \
-benyoo/redis:3.2.5
-</code></pre><h2 id="slave上操作"><a href="#slave上操作" class="headerlink" title="slave上操作"></a>slave上操作</h2><h1 id="1-创建数据文件-1"><a href="#1-创建数据文件-1" class="headerlink" title="1.创建数据文件"></a>1.创建数据文件</h1><pre><code>mkdir /opt/redis
-</code></pre><p>2.拉取redis镜像</p>
-<pre><code>docker pull benyoo/redis:3.2.5
-</code></pre><p>3.配置redis文件</p>
-<pre><code>echo &#39;bind 0.0.0.0
-protected-mode yes
-port 6379
-tcp-backlog 511
-timeout 0
-tcp-keepalive 300
-daemonize no
-supervised no
-pidfile /var/run/redis_6379.pid
-loglevel notice
-logfile &quot;&quot;
-databases 8
-save 900 1
-save 300 10
-save 60 10000
-stop-writes-on-bgsave-error yes
-rdbcompression yes
-rdbchecksum yes
-dbfilename dump.rdb
-dir /data/redis
-slave-serve-stale-data yes
-slave-read-only yes
-repl-diskless-sync no
-repl-diskless-sync-delay 5
-repl-disable-tcp-nodelay no
-slave-priority 100
-appendonly no
-appendfilename &quot;appendonly.aof&quot;
-appendfsync everysec
-no-appendfsync-on-rewrite no
-auto-aof-rewrite-percentage 100
-auto-aof-rewrite-min-size 64mb
-aof-load-truncated yes
-lua-time-limit 5000
-slowlog-log-slower-than 10000
-slowlog-max-len 128
-latency-monitor-threshold 0
-notify-keyspace-events &quot;&quot;
-hash-max-ziplist-entries 512
-hash-max-ziplist-value 64
-list-max-ziplist-size -2
-list-compress-depth 0
-set-max-intset-entries 512
-zset-max-ziplist-entries 128
-zset-max-ziplist-value 64
-hll-sparse-max-bytes 3000
-activerehashing yes
-client-output-buffer-limit normal 0 0 0
-client-output-buffer-limit slave 256mb 64mb 60
-client-output-buffer-limit pubsub 32mb 8mb 60
-hz 10
-aof-rewrite-incremental-fsync yes
-
-slaveof 192.168.1.14 6379
-masterauth ZDU0NTlkNDY5NWZi
-requirepass ZDU0NTlkNDY5NWZi&#39; &gt;/opt/redis/redis.conf
-</code></pre><h1 id="4-配置防火墙-1"><a href="#4-配置防火墙-1" class="headerlink" title="4.配置防火墙"></a>4.配置防火墙</h1><pre><code>iptables -I INPUT 5 -p tcp -m state --state NEW -m tcp -m comment --comment &quot;REDIS_SERVER&quot; -m multiport --dports 6379 -j ACCEPT
-iptables -nvxL --lin
-</code></pre><h1 id="5-启动redis容器-1"><a href="#5-启动redis容器-1" class="headerlink" title="5.启动redis容器"></a>5.启动redis容器</h1><pre><code>docker run -d \
---privileged=true \
---name redis-slave \
---restart=always \
--p 6379:6379
--v /opt/redis/redis.conf:/opt/redis/redis.conf \
--v /etc/localtime:/etc/localtime \
-benyoo/redis:3.2.5
-</code></pre><h1 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h1><pre><code>docker exec -it redis redis-cli -h 192.168.1.15 -a ZDU0NTlkNDY5NWZi info replication
-# Replication
-role:slave
-master_host:192.168.1.14
-master_port:6379
-master_link_status:up
-master_last_io_seconds_ago:9
-master_sync_in_progress:0
-slave_repl_offset:281
-slave_priority:100
-slave_read_only:1
-connected_slaves:0
-master_repl_offset:0
-repl_backlog_active:0
-repl_backlog_size:1048576
-repl_backlog_first_byte_offset:0
-repl_backlog_histlen:0
-</code></pre><pre><code>docker exec -it redis redis-cli -h 192.168.1.14 -a ZDU0NTlkNDY5NWZi info replication 
-# Replication
-role:master
-connected_slaves:1
-slave0:ip=192.168.1.15,port=6379,state=online,offset=295,lag=1
-master_repl_offset:295
-repl_backlog_active:1
-repl_backlog_size:1048576
-repl_backlog_first_byte_offset:2
-repl_backlog_histlen:294
-</code></pre><pre><code>docker exec -it redis redis-cli -h 192.168.1.14 -a ZDU0NTlkNDY5NWZi set Test_Write_key www.shangtv.cn         #创建数据
-OK
-</code></pre><pre><code>docker exec -it redis redis-cli -h 192.168.1.14 -a ZDU0NTlkNDY5NWZi get Test_Write_key 
-www.shangtv.cn
-</code></pre>
       
     </div>
     
@@ -654,6 +545,39 @@ www.shangtv.cn
     <div>
       
         
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <p><span>-----------</span></p>
+  
+<!-- <p><strong>本文标题:</strong><a href="/2018/04/11/centos7-install-saltstack/">centos7部署saltstack自动化平台</a></p> -->
+  <p><strong>本文作者：</strong><a href="/" title="访问 Oliver 的个人博客">Oliver</a></p>
+  <!--
+  <p><span>发布时间:</span>2018年04月11日 - 16:04</p>
+  <p><span>最后更新:</span>2018年04月11日 - 16:04</p>
+  -->
+  <p><strong>本文链接：</strong><a href="/2018/04/11/centos7-install-saltstack/" title="centos7部署saltstack自动化平台">http://itpai.top/2018/04/11/centos7-install-saltstack/</a>
+    <strong class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://itpai.top/2018/04/11/centos7-install-saltstack/"  aria-label="复制成功！"></i></strong>
+  </p>
+  <p><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用<a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">CC BY-NC-ND 4.0 </a>许可协议。转载请注明出处!</p> 
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+      $(".fa-clipboard").click(function(){
+      clipboard.on('success', function(){
+        swal({   
+          title: "",   
+          text: '复制成功',
+          icon: "success", 
+          showConfirmButton: true
+          });
+        });
+    });  
+</script>
+
       
     </div>
 
@@ -677,11 +601,13 @@ www.shangtv.cn
       
         <div class="post-tags">
           
-            <a href="/tags/docker/" rel="tag"># docker</a>
-          
             <a href="/tags/linux自动化运维/" rel="tag"># linux自动化运维</a>
           
-            <a href="/tags/redis/" rel="tag"># redis</a>
+            <a href="/tags/shell/" rel="tag"># shell</a>
+          
+            <a href="/tags/linxu/" rel="tag"># linxu</a>
+          
+            <a href="/tags/saltstack/" rel="tag"># saltstack</a>
           
         </div>
       
@@ -694,8 +620,8 @@ www.shangtv.cn
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/04/08/registry-v2搭建/" rel="next" title="registry v2搭建">
-                <i class="fa fa-chevron-left"></i> registry v2搭建
+              <a href="/2018/04/11/合格linux运维人员必会的30道shell编程企业实战题及讲解/" rel="next" title="合格linux运维人员必会的30道shell编程企业实战题及讲解">
+                <i class="fa fa-chevron-left"></i> 合格linux运维人员必会的30道shell编程企业实战题及讲解
               </a>
             
           </div>
@@ -704,8 +630,8 @@ www.shangtv.cn
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/04/08/docker-swarm集群/" rel="prev" title="docker_swarm集群">
-                docker_swarm集群 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/04/11/centos7-kubernetes-cluser/" rel="prev" title="centos7部署kubernetes-cluser">
+                centos7部署kubernetes-cluser <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -918,7 +844,7 @@ www.shangtv.cn
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#master操作"><span class="nav-number">1.</span> <span class="nav-text">master操作</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-创建数据文件"><span class="nav-number"></span> <span class="nav-text">1.创建数据文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-拉取redis镜像"><span class="nav-number"></span> <span class="nav-text">2.拉取redis镜像</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-配置redis文件"><span class="nav-number"></span> <span class="nav-text">3.配置redis文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-配置防火墙"><span class="nav-number"></span> <span class="nav-text">4.配置防火墙</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-启动redis容器"><span class="nav-number"></span> <span class="nav-text">5.启动redis容器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#slave上操作"><span class="nav-number">1.</span> <span class="nav-text">slave上操作</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-创建数据文件-1"><span class="nav-number"></span> <span class="nav-text">1.创建数据文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-配置防火墙-1"><span class="nav-number"></span> <span class="nav-text">4.配置防火墙</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-启动redis容器-1"><span class="nav-number"></span> <span class="nav-text">5.启动redis容器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#测试"><span class="nav-number"></span> <span class="nav-text">测试</span></a></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#部署环境"><span class="nav-number">1.</span> <span class="nav-text">部署环境</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#master部署"><span class="nav-number"></span> <span class="nav-text">master部署</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-1-查看centos的版本和内核版本以及安装配置阿里云yum源"><span class="nav-number"></span> <span class="nav-text">1.1 查看centos的版本和内核版本以及安装配置阿里云yum源</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-2-安装epel-release和salt-master工具包"><span class="nav-number"></span> <span class="nav-text">1.2 安装epel-release和salt-master工具包</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-3-配置saltstatck开机自启动服务"><span class="nav-number"></span> <span class="nav-text">1.3 配置saltstatck开机自启动服务</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-4-启动saltstack-master服务"><span class="nav-number"></span> <span class="nav-text">1.4 启动saltstack master服务</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-5-检查saltstack端口及进程的运行状态"><span class="nav-number"></span> <span class="nav-text">1.5 检查saltstack端口及进程的运行状态</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-2-安装epel-release和salt-minion工具包"><span class="nav-number"></span> <span class="nav-text">2.2 安装epel-release和salt-minion工具包</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-3-配置minion配置"><span class="nav-number"></span> <span class="nav-text">2.3 配置minion配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-4-配置saltstatck开机自启动服务"><span class="nav-number"></span> <span class="nav-text">2.4 配置saltstatck开机自启动服务</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-5-启动saltstack-minion服务"><span class="nav-number"></span> <span class="nav-text">2.5 启动saltstack minion服务</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#其他minion同样配置"><span class="nav-number"></span> <span class="nav-text">其他minion同样配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#saltstack具体操作"><span class="nav-number"></span> <span class="nav-text">saltstack具体操作</span></a></div>
             
 
           </div>
