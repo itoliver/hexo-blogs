@@ -619,7 +619,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,053
+                  2,048
                 </span>
               
 
@@ -658,14 +658,8 @@
       
         
           <p>前言<br>Kubernetes是Google开源的容器集群管理系统，其提供应用部署、维护、 扩展机制等功能，利用Kubernetes能方便地管理跨机器运行容器化的应用，是Docker分布式系统的解决方案。k8s里所有的资源都可以用yaml或Json定义。<br>K8s基本概念</p>
-<ol>
-<li>Master<br>Master节点负责整个集群的控制和管理，所有的控制命令都是发给它，上面运行着一组关键进程：</li>
-</ol>
-<p>kube-apiserver：提供了HTTP REST接口，是k8s所有资源增删改查等操作的唯一入口，也是集群控制的入口。<br>kube-controller-manager：所有资源的自动化控制中心。当集群状态与期望不同时，kcm会努力让集群恢复期望状态，比如：当一个pod死掉，kcm会努力新建一个pod来恢复对应replicas set期望的状态。<br>kube-scheduler：负责Pod的调度。<br>实际上，Master只是一个名义上的概念，三个关键的服务不一定需要运行在一个节点上。</p>
-<ol start="2">
-<li>Node<br>Node是工作负载节点，运行着Master分配的负载（Pod），但一个Node宕机时，其上的负载会被自动转移到其他Node上。其上运行的关键组件是：</li>
-</ol>
-<p>kubelet：负责Pod的生命周期管理，同时与Master密切协作，实现集群管理的基本功能。<br>kube-proxy：实现Service的通信与负载均衡机制的重要组件，老版本主要通过设置iptables规则实现，新版1.9基于kube-proxy-lvs 实现。<br>Docker Engine：Docker引擎，负责Docker的生命周期管理。<br>
+<p>Master<br>Master节点负责整个集群的控制和管理，所有的控制命令都是发给它，上面运行着一组关键进程：<br>kube-apiserver：提供了HTTP REST接口，是k8s所有资源增删改查等操作的唯一入口，也是集群控制的入口。<br>kube-controller-manager：所有资源的自动化控制中心。当集群状态与期望不同时，kcm会努力让集群恢复期望状态，比如：当一个pod死掉，kcm会努力新建一个pod来恢复对应replicas set期望的状态。<br>kube-scheduler：负责Pod的调度。<br>实际上，Master只是一个名义上的概念，三个关键的服务不一定需要运行在一个节点上。</p>
+<p>Node<br>Node是工作负载节点，运行着Master分配的负载（Pod），但一个Node宕机时，其上的负载会被自动转移到其他Node上。其上运行的关键组件是：<br>kubelet：负责Pod的生命周期管理，同时与Master密切协作，实现集群管理的基本功能。<br>kube-proxy：实现Service的通信与负载均衡机制的重要组件，老版本主要通过设置iptables规则实现，新版1.9基于kube-proxy-lvs 实现。<br>Docker Engine：Docker引擎，负责Docker的生命周期管理。<br>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/04/11/centos7-kubernetes-cluser/#more" rel="contents">

@@ -113,7 +113,7 @@
 <meta property="og:site_name" content="Oliver&#39;s Blog">
 <meta property="og:description" content="SaltStack是(C/S)架构的集中化管理平台，SaltStack基于Python语言，采用zeromq消息队列进行通信(tcp,ipc)。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-11T08:50:50.324Z">
+<meta property="og:updated_time" content="2018-04-11T08:53:40.773Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="centos7部署saltstack自动化平台">
 <meta name="twitter:description" content="SaltStack是(C/S)架构的集中化管理平台，SaltStack基于Python语言，采用zeromq消息队列进行通信(tcp,ipc)。">
@@ -488,52 +488,39 @@ yum install salt-master -y
 </code></pre><h1 id="1-3-配置saltstatck开机自启动服务"><a href="#1-3-配置saltstatck开机自启动服务" class="headerlink" title="1.3 配置saltstatck开机自启动服务"></a>1.3 配置saltstatck开机自启动服务</h1><pre><code>systemctl enable salt-master.service
 </code></pre><h1 id="1-4-启动saltstack-master服务"><a href="#1-4-启动saltstack-master服务" class="headerlink" title="1.4 启动saltstack master服务"></a>1.4 启动saltstack master服务</h1><pre><code>systemctl start salt-master
 </code></pre><h1 id="1-5-检查saltstack端口及进程的运行状态"><a href="#1-5-检查saltstack端口及进程的运行状态" class="headerlink" title="1.5 检查saltstack端口及进程的运行状态"></a>1.5 检查saltstack端口及进程的运行状态</h1><ul>
-<li>4505是saltstack管理服务器发送命令消息的端口，4506是消息返回时所用的端口，saltstack一般是启动多个进程并发工作的<br><code>`</code>netstat -ntlp|grep python<br>tcp 0 0 120.76.40.16:4505 0.0.0.0:<em> LISTEN 4916/python<br>tcp 0 0 120.76.40.16:4506 0.0.0.0:</em> LISTEN 4936/python<pre><code>
-</code></pre>ps -aux |grep salt-master|grep -v grep<br>root 4906 0.0 0.0 314468 27816 ? Ss 10:47 0:00 /usr/bin/python /usr/bin/salt-master<br>root 4915 0.3 0.1 414628 37948 ? Sl 10:47 0:36 /usr/bin/python /usr/bin/salt-master<br>root 4916 0.0 0.0 396528 23580 ? Sl 10:47 0:00 /usr/bin/python /usr/bin/salt-master<br>root 4917 0.0 0.0 396528 25920 ? Sl 10:47 0:00 /usr/bin/python /usr/bin/salt-master<br>root 4920 0.0 0.0 314468 22936 ? S 10:47 0:00 /usr/bin/python /usr/bin/salt-master<br>root 4923 0.0 0.0 1057776 32016 ? Sl 10:47 0:01 /usr/bin/python /usr/bin/salt-master<br>root 4924 0.0 0.1 1205240 34072 ? Sl 10:47 0:01 /usr/bin/python /usr/bin/salt-master<br>root 4928 0.0 0.1 1205976 34252 ? Sl 10:47 0:01 /usr/bin/python /usr/bin/salt-master<br>root 4931 0.0 0.1 1206252 34200 ? Sl 10:47 0:01 /usr/bin/python /usr/bin/salt-master<br>root 4933 0.0 0.0 1057964 32280 ? Sl 10:47 0:01 /usr/bin/python /usr/bin/salt-master<br>root 4936 0.0 0.0 691476 23472 ? Sl 10:47 0:00 /usr/bin/python /usr/bin/salt-master<pre><code># 1.6 配置iptables防火墙)（ps：注意selinux状态，阿里云服务器默认是disabled）
-</code></pre>vim /etc/systconfig/iptables加入两行<br>-A INPUT -p tcp -m state –state NEW -m tcp –dport 4505 -j ACCEPT<br>-A INPUT -p tcp -m state –state NEW -m tcp –dport 4506 -j ACCEPT<pre><code>
-</code></pre>systemctl restart iptables<pre><code># 配置salt-minion
-# 2.1 查看centos的版本和内核版本以及安装配置阿里云yum源
-```cat /etc/redhat-release
-CentOS Linux release 7.3.1611 (Core)
-</code></pre>安装centos7 yum源<pre><code>wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo
-</code></pre><h1 id="2-2-安装epel-release和salt-minion工具包"><a href="#2-2-安装epel-release和salt-minion工具包" class="headerlink" title="2.2 安装epel-release和salt-minion工具包"></a>2.2 安装epel-release和salt-minion工具包</h1><pre><code>yum install epel-release -y
-yum install salt-minion -y
-</code></pre><h1 id="2-3-配置minion配置"><a href="#2-3-配置minion配置" class="headerlink" title="2.3 配置minion配置"></a>2.3 配置minion配置</h1>master参数指定master 的ip (或者主机名)，必配参数，如果minion启动时不能解析到master 主机，启动会失败；<pre><code>sed -i &#39;s/#master: salt/master: 192.168.1.100/g&#39; /etc/salt/minion
-</code></pre>id参数设置salt-minion名，默认未设置，minio名取主机hostname中设定的主机名<pre><code>sed -i &#39;s/#id:/id: 192.168.200/g&#39; /etc/salt/minion
-</code></pre><h1 id="2-4-配置saltstatck开机自启动服务"><a href="#2-4-配置saltstatck开机自启动服务" class="headerlink" title="2.4 配置saltstatck开机自启动服务"></a>2.4 配置saltstatck开机自启动服务</h1><pre><code>systemctl enable salt-minion
-</code></pre><h1 id="2-5-启动saltstack-minion服务"><a href="#2-5-启动saltstack-minion服务" class="headerlink" title="2.5 启动saltstack minion服务"></a>2.5 启动saltstack minion服务</h1><pre><code>systemctl start salt-minion
-</code></pre><h1 id="其他minion同样配置"><a href="#其他minion同样配置" class="headerlink" title="其他minion同样配置"></a>其他minion同样配置</h1><h1 id="saltstack具体操作"><a href="#saltstack具体操作" class="headerlink" title="saltstack具体操作"></a>saltstack具体操作</h1><pre><code>salt-key -L                                #查看salt-key
-Accepted Keys:
-salt-minion-01
-salt-minion-02
-Denied Keys:
-Unaccepted Keys:
-Rejected Keys:
-</code></pre><pre><code>salt-key -A -y                      #添加salt-key
-The following keys are going to be accepted:
-Unaccepted Keys:
-salt-minion-01
-salt-minion-02
-Key for minion salt-minion-01 accepted.
-Key for minion salt-minion-02 accepted.
-</code></pre><pre><code>salt-key -L                                #查看salt-key
-Accepted Keys:
-salt-minion-01
-salt-minion-02
-Denied Keys:
-Unaccepted Keys:
-Rejected Keys:
-</code></pre><pre><code>salt salt-minion* test.ping        #简单测试
-salt-minion-01:
-  True
-salt-minion-02:
-  True
-</code></pre><pre><code>salt salt-minion* cmd.run &#39;uname -r&#39;        #运行linux命令
-salt-minion-01:
-  3.10.0-327.el7.x86_64
-salt-minion-02:
-  3.10.0-327.el7.x86_64
-</code></pre></li>
+<li>4505是saltstack管理服务器发送命令消息的端口，4506是消息返回时所用的端口，saltstack一般是启动多个进程并发工作的<pre><code>netstat -ntlp|grep python
+tcp 0 0 120.76.40.16:4505 0.0.0.0:* LISTEN 4916/python 
+tcp 0 0 120.76.40.16:4506 0.0.0.0:* LISTEN 4936/python
+</code></pre><pre><code>ps -aux |grep salt-master|grep -v grep
+root 4906 0.0 0.0 314468 27816 ? Ss 10:47 0:00 /usr/bin/python /usr/bin/salt-master
+root 4915 0.3 0.1 414628 37948 ? Sl 10:47 0:36 /usr/bin/python /usr/bin/salt-master
+root 4916 0.0 0.0 396528 23580 ? Sl 10:47 0:00 /usr/bin/python /usr/bin/salt-master
+root 4917 0.0 0.0 396528 25920 ? Sl 10:47 0:00 /usr/bin/python /usr/bin/salt-master
+root 4920 0.0 0.0 314468 22936 ? S 10:47 0:00 /usr/bin/python /usr/bin/salt-master
+root 4923 0.0 0.0 1057776 32016 ? Sl 10:47 0:01 /usr/bin/python /usr/bin/salt-master
+root 4924 0.0 0.1 1205240 34072 ? Sl 10:47 0:01 /usr/bin/python /usr/bin/salt-master
+root 4928 0.0 0.1 1205976 34252 ? Sl 10:47 0:01 /usr/bin/python /usr/bin/salt-master
+root 4931 0.0 0.1 1206252 34200 ? Sl 10:47 0:01 /usr/bin/python /usr/bin/salt-master
+root 4933 0.0 0.0 1057964 32280 ? Sl 10:47 0:01 /usr/bin/python /usr/bin/salt-master
+root 4936 0.0 0.0 691476 23472 ? Sl 10:47 0:00 /usr/bin/python /usr/bin/salt-master
+</code></pre><h1 id="1-6-配置iptables防火墙-（ps：注意selinux状态，阿里云服务器默认是disabled）"><a href="#1-6-配置iptables防火墙-（ps：注意selinux状态，阿里云服务器默认是disabled）" class="headerlink" title="1.6 配置iptables防火墙)（ps：注意selinux状态，阿里云服务器默认是disabled）"></a>1.6 配置iptables防火墙)（ps：注意selinux状态，阿里云服务器默认是disabled）</h1><pre><code>vim /etc/systconfig/iptables加入两行
+-A INPUT -p tcp -m state --state NEW -m tcp --dport 4505 -j ACCEPT
+-A INPUT -p tcp -m state --state NEW -m tcp --dport 4506 -j ACCEPT
+</code></pre><pre><code>systemctl restart iptables
+</code></pre><h1 id="配置salt-minion"><a href="#配置salt-minion" class="headerlink" title="配置salt-minion"></a>配置salt-minion</h1><h1 id="2-1-查看centos的版本和内核版本以及安装配置阿里云yum源"><a href="#2-1-查看centos的版本和内核版本以及安装配置阿里云yum源" class="headerlink" title="2.1 查看centos的版本和内核版本以及安装配置阿里云yum源"></a>2.1 查看centos的版本和内核版本以及安装配置阿里云yum源</h1><code>`</code>cat /etc/redhat-release<br>CentOS Linux release 7.3.1611 (Core)<pre><code>安装centos7 yum源
+</code></pre>wget -O /etc/yum.repos.d/CentOS-Base.repo <a href="http://mirrors.aliyun.com/repo/Centos-7.repo" target="_blank" rel="noopener">http://mirrors.aliyun.com/repo/Centos-7.repo</a><pre><code># 2.2 安装epel-release和salt-minion工具包
+</code></pre>yum install epel-release -y<br>yum install salt-minion -y<pre><code># 2.3 配置minion配置
+master参数指定master 的ip (或者主机名)，必配参数，如果minion启动时不能解析到master 主机，启动会失败；
+</code></pre>sed -i ‘s/#master: salt/master: 192.168.1.100/g’ /etc/salt/minion<pre><code>id参数设置salt-minion名，默认未设置，minio名取主机hostname中设定的主机名
+</code></pre>sed -i ‘s/#id:/id: 192.168.200/g’ /etc/salt/minion<pre><code># 2.4 配置saltstatck开机自启动服务
+</code></pre>systemctl enable salt-minion<pre><code># 2.5 启动saltstack minion服务
+</code></pre>systemctl start salt-minion<pre><code># 其他minion同样配置 
+# saltstack具体操作
+</code></pre>salt-key -L                                #查看salt-key<br>Accepted Keys:<br>salt-minion-01<br>salt-minion-02<br>Denied Keys:<br>Unaccepted Keys:<br>Rejected Keys:<pre><code>
+</code></pre>salt-key -A -y                      #添加salt-key<br>The following keys are going to be accepted:<br>Unaccepted Keys:<br>salt-minion-01<br>salt-minion-02<br>Key for minion salt-minion-01 accepted.<br>Key for minion salt-minion-02 accepted.<pre><code>
+</code></pre>salt-key -L                                #查看salt-key<br>Accepted Keys:<br>salt-minion-01<br>salt-minion-02<br>Denied Keys:<br>Unaccepted Keys:<br>Rejected Keys:<pre><code>
+</code></pre>salt salt-minion* test.ping        #简单测试<br>salt-minion-01:<br>  True<br>salt-minion-02:<br>  True<pre><code>
+</code></pre>salt salt-minion* cmd.run ‘uname -r’        #运行linux命令<br>salt-minion-01:<br>  3.10.0-327.el7.x86_64<br>salt-minion-02:<br>  3.10.0-327.el7.x86_64<br><code>`</code></li>
 </ul>
 
       
@@ -844,7 +831,7 @@ salt-minion-02:
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#部署环境"><span class="nav-number">1.</span> <span class="nav-text">部署环境</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#master部署"><span class="nav-number"></span> <span class="nav-text">master部署</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-1-查看centos的版本和内核版本以及安装配置阿里云yum源"><span class="nav-number"></span> <span class="nav-text">1.1 查看centos的版本和内核版本以及安装配置阿里云yum源</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-2-安装epel-release和salt-master工具包"><span class="nav-number"></span> <span class="nav-text">1.2 安装epel-release和salt-master工具包</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-3-配置saltstatck开机自启动服务"><span class="nav-number"></span> <span class="nav-text">1.3 配置saltstatck开机自启动服务</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-4-启动saltstack-master服务"><span class="nav-number"></span> <span class="nav-text">1.4 启动saltstack master服务</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-5-检查saltstack端口及进程的运行状态"><span class="nav-number"></span> <span class="nav-text">1.5 检查saltstack端口及进程的运行状态</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-2-安装epel-release和salt-minion工具包"><span class="nav-number"></span> <span class="nav-text">2.2 安装epel-release和salt-minion工具包</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-3-配置minion配置"><span class="nav-number"></span> <span class="nav-text">2.3 配置minion配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-4-配置saltstatck开机自启动服务"><span class="nav-number"></span> <span class="nav-text">2.4 配置saltstatck开机自启动服务</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-5-启动saltstack-minion服务"><span class="nav-number"></span> <span class="nav-text">2.5 启动saltstack minion服务</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#其他minion同样配置"><span class="nav-number"></span> <span class="nav-text">其他minion同样配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#saltstack具体操作"><span class="nav-number"></span> <span class="nav-text">saltstack具体操作</span></a></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#部署环境"><span class="nav-number">1.</span> <span class="nav-text">部署环境</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#master部署"><span class="nav-number"></span> <span class="nav-text">master部署</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-1-查看centos的版本和内核版本以及安装配置阿里云yum源"><span class="nav-number"></span> <span class="nav-text">1.1 查看centos的版本和内核版本以及安装配置阿里云yum源</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-2-安装epel-release和salt-master工具包"><span class="nav-number"></span> <span class="nav-text">1.2 安装epel-release和salt-master工具包</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-3-配置saltstatck开机自启动服务"><span class="nav-number"></span> <span class="nav-text">1.3 配置saltstatck开机自启动服务</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-4-启动saltstack-master服务"><span class="nav-number"></span> <span class="nav-text">1.4 启动saltstack master服务</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-5-检查saltstack端口及进程的运行状态"><span class="nav-number"></span> <span class="nav-text">1.5 检查saltstack端口及进程的运行状态</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-6-配置iptables防火墙-（ps：注意selinux状态，阿里云服务器默认是disabled）"><span class="nav-number"></span> <span class="nav-text">1.6 配置iptables防火墙)（ps：注意selinux状态，阿里云服务器默认是disabled）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#配置salt-minion"><span class="nav-number"></span> <span class="nav-text">配置salt-minion</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-1-查看centos的版本和内核版本以及安装配置阿里云yum源"><span class="nav-number"></span> <span class="nav-text">2.1 查看centos的版本和内核版本以及安装配置阿里云yum源</span></a></div>
             
 
           </div>

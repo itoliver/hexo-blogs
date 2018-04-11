@@ -105,18 +105,18 @@
 
 
 
-<meta name="description" content="前言Kubernetes是Google开源的容器集群管理系统，其提供应用部署、维护、 扩展机制等功能，利用Kubernetes能方便地管理跨机器运行容器化的应用，是Docker分布式系统的解决方案。k8s里所有的资源都可以用yaml或Json定义。K8s基本概念  MasterMaster节点负责整个集群的控制和管理，所有的控制命令都是发给它，上面运行着一组关键进程：  kube-apiserve">
+<meta name="description" content="前言Kubernetes是Google开源的容器集群管理系统，其提供应用部署、维护、 扩展机制等功能，利用Kubernetes能方便地管理跨机器运行容器化的应用，是Docker分布式系统的解决方案。k8s里所有的资源都可以用yaml或Json定义。K8s基本概念 MasterMaster节点负责整个集群的控制和管理，所有的控制命令都是发给它，上面运行着一组关键进程：kube-apiserver：提">
 <meta name="keywords" content="docker,linux自动化运维,kubernetes">
 <meta property="og:type" content="article">
 <meta property="og:title" content="centos7部署kubernetes-cluser">
 <meta property="og:url" content="http://itpai.top/2018/04/11/centos7-kubernetes-cluser/index.html">
 <meta property="og:site_name" content="Oliver&#39;s Blog">
-<meta property="og:description" content="前言Kubernetes是Google开源的容器集群管理系统，其提供应用部署、维护、 扩展机制等功能，利用Kubernetes能方便地管理跨机器运行容器化的应用，是Docker分布式系统的解决方案。k8s里所有的资源都可以用yaml或Json定义。K8s基本概念  MasterMaster节点负责整个集群的控制和管理，所有的控制命令都是发给它，上面运行着一组关键进程：  kube-apiserve">
+<meta property="og:description" content="前言Kubernetes是Google开源的容器集群管理系统，其提供应用部署、维护、 扩展机制等功能，利用Kubernetes能方便地管理跨机器运行容器化的应用，是Docker分布式系统的解决方案。k8s里所有的资源都可以用yaml或Json定义。K8s基本概念 MasterMaster节点负责整个集群的控制和管理，所有的控制命令都是发给它，上面运行着一组关键进程：kube-apiserver：提">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-11T08:48:14.743Z">
+<meta property="og:updated_time" content="2018-04-11T09:01:17.333Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="centos7部署kubernetes-cluser">
-<meta name="twitter:description" content="前言Kubernetes是Google开源的容器集群管理系统，其提供应用部署、维护、 扩展机制等功能，利用Kubernetes能方便地管理跨机器运行容器化的应用，是Docker分布式系统的解决方案。k8s里所有的资源都可以用yaml或Json定义。K8s基本概念  MasterMaster节点负责整个集群的控制和管理，所有的控制命令都是发给它，上面运行着一组关键进程：  kube-apiserve">
+<meta name="twitter:description" content="前言Kubernetes是Google开源的容器集群管理系统，其提供应用部署、维护、 扩展机制等功能，利用Kubernetes能方便地管理跨机器运行容器化的应用，是Docker分布式系统的解决方案。k8s里所有的资源都可以用yaml或Json定义。K8s基本概念 MasterMaster节点负责整个集群的控制和管理，所有的控制命令都是发给它，上面运行着一组关键进程：kube-apiserver：提">
 
 
 
@@ -449,7 +449,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,053
+                  2,048
                 </span>
               
 
@@ -487,15 +487,9 @@
 
       
         <p>前言<br>Kubernetes是Google开源的容器集群管理系统，其提供应用部署、维护、 扩展机制等功能，利用Kubernetes能方便地管理跨机器运行容器化的应用，是Docker分布式系统的解决方案。k8s里所有的资源都可以用yaml或Json定义。<br>K8s基本概念</p>
-<ol>
-<li>Master<br>Master节点负责整个集群的控制和管理，所有的控制命令都是发给它，上面运行着一组关键进程：</li>
-</ol>
-<p>kube-apiserver：提供了HTTP REST接口，是k8s所有资源增删改查等操作的唯一入口，也是集群控制的入口。<br>kube-controller-manager：所有资源的自动化控制中心。当集群状态与期望不同时，kcm会努力让集群恢复期望状态，比如：当一个pod死掉，kcm会努力新建一个pod来恢复对应replicas set期望的状态。<br>kube-scheduler：负责Pod的调度。<br>实际上，Master只是一个名义上的概念，三个关键的服务不一定需要运行在一个节点上。</p>
-<ol start="2">
-<li>Node<br>Node是工作负载节点，运行着Master分配的负载（Pod），但一个Node宕机时，其上的负载会被自动转移到其他Node上。其上运行的关键组件是：</li>
-</ol>
-<p>kubelet：负责Pod的生命周期管理，同时与Master密切协作，实现集群管理的基本功能。<br>kube-proxy：实现Service的通信与负载均衡机制的重要组件，老版本主要通过设置iptables规则实现，新版1.9基于kube-proxy-lvs 实现。<br>Docker Engine：Docker引擎，负责Docker的生命周期管理。<br><a id="more"></a></p>
-<h2 id="一、安装前准备"><a href="#一、安装前准备" class="headerlink" title="一、安装前准备"></a>一、安装前准备</h2><h1 id="1-操作系统详情"><a href="#1-操作系统详情" class="headerlink" title="1.操作系统详情"></a>1.操作系统详情</h1><p>需要三台主机，都最小化安装 centos7.3,并update到最新</p>
+<p>Master<br>Master节点负责整个集群的控制和管理，所有的控制命令都是发给它，上面运行着一组关键进程：<br>kube-apiserver：提供了HTTP REST接口，是k8s所有资源增删改查等操作的唯一入口，也是集群控制的入口。<br>kube-controller-manager：所有资源的自动化控制中心。当集群状态与期望不同时，kcm会努力让集群恢复期望状态，比如：当一个pod死掉，kcm会努力新建一个pod来恢复对应replicas set期望的状态。<br>kube-scheduler：负责Pod的调度。<br>实际上，Master只是一个名义上的概念，三个关键的服务不一定需要运行在一个节点上。</p>
+<p>Node<br>Node是工作负载节点，运行着Master分配的负载（Pod），但一个Node宕机时，其上的负载会被自动转移到其他Node上。其上运行的关键组件是：<br>kubelet：负责Pod的生命周期管理，同时与Master密切协作，实现集群管理的基本功能。<br>kube-proxy：实现Service的通信与负载均衡机制的重要组件，老版本主要通过设置iptables规则实现，新版1.9基于kube-proxy-lvs 实现。<br>Docker Engine：Docker引擎，负责Docker的生命周期管理。<br><a id="more"></a></p>
+<h1 id="安装前准备"><a href="#安装前准备" class="headerlink" title="安装前准备"></a>安装前准备</h1><h1 id="1-操作系统详情"><a href="#1-操作系统详情" class="headerlink" title="1.操作系统详情"></a>1.操作系统详情</h1><p>需要三台主机，都最小化安装 centos7.3,并update到最新</p>
 <pre><code>[root@master ~]# cat /etc/redhat-release 
 CentOS Linux release 7.3.1611 (Core)
 角色       主机名         IP
@@ -510,7 +504,7 @@ systemctl start iptables.service
 systemctl enable iptables.service
 </code></pre><h1 id="3-安装ntp服务"><a href="#3-安装ntp服务" class="headerlink" title="3.安装ntp服务"></a>3.安装ntp服务</h1><pre><code>yuminstall -y ntp wget net-tools 
 systemctl start ntpd systemctl enable ntpd
-</code></pre><h2 id="二、安装配置"><a href="#二、安装配置" class="headerlink" title="二、安装配置"></a>二、安装配置</h2><p>注：kubernetes，etcd等已经进去centos epel源，可以直接yum安装（需要安装epel-release）</p>
+</code></pre><h1 id="安装配置"><a href="#安装配置" class="headerlink" title="安装配置"></a>安装配置</h1><p>注：kubernetes，etcd等已经进去centos epel源，可以直接yum安装（需要安装epel-release）</p>
 <h1 id="1-安装Kubernetes-Master"><a href="#1-安装Kubernetes-Master" class="headerlink" title="1.安装Kubernetes Master"></a>1.安装Kubernetes Master</h1><p>使用以下命令安装kubernetes 和 etcd</p>
 <pre><code>yum install -y kubernetes etcd
 </code></pre><p>编辑/etc/etcd/etcd.conf 使etcd监听所有的ip地址，确保下列行没有注释，并修改为下面的值</p>
@@ -621,7 +615,7 @@ NAME           STATUS    AGE
 192.168.1.15   Ready     2h
 192.168.1.16   Ready     2h
 </code></pre><p>至此，kubernetes集群已经配置并运行了，我们可以继续下面的步骤。</p>
-<h2 id="三、创建-Pods-Containers"><a href="#三、创建-Pods-Containers" class="headerlink" title="三、创建 Pods (Containers)"></a>三、创建 Pods (Containers)</h2><p>为了创建一个pod，我们需要在kubernetes master上面定义一个yaml 或者 json配置文件。然后使用kubectl命令创建pod</p>
+<h1 id="创建-Pods-Containers"><a href="#创建-Pods-Containers" class="headerlink" title="创建 Pods (Containers)"></a>创建 Pods (Containers)</h1><p>为了创建一个pod，我们需要在kubernetes master上面定义一个yaml 或者 json配置文件。然后使用kubectl命令创建pod</p>
 <pre><code>mkdir -p /k8s/pods
 cd /k8s/pods/
 </code></pre><p>查看nginx.yaml内容如下：</p>
@@ -639,7 +633,7 @@ ports:
 - containerPort: 80
 </code></pre><p>创建pod:</p>
 <pre><code>kubectl create -f nginx.yaml
-</code></pre><p>此时有如下报错：<br>Error from server: error when creating “nginx.yaml”: Pod “nginx” is forbidden: no API token found for service account default/default, retry after the token is automatically created and added to the service account<br>解决办法是编辑/etc/kubernetes/apiserver 去除 KUBE_ADMISSION_CONTROL中的SecurityContextDeny,ServiceAccount，并重启kube-apiserver.service服务：</p>
+</code></pre><p>此时有如下报错：<br><code>Error from server: error when creating &quot;nginx.yaml&quot;: Pod &quot;nginx&quot; is forbidden: no API token found for service account default/default, retry after the token is automatically created and added to the service account</code><br>解决办法是编辑/etc/kubernetes/apiserver 去除 KUBE_ADMISSION_CONTROL中的SecurityContextDeny,ServiceAccount，并重启kube-apiserver.service服务：</p>
 <pre><code>cat /etc/kubernetes/apiserver
 KUBE_ADMISSION_CONTROL=&quot;--admission_control=NamespaceLifecycle,NamespaceExists,LimitRanger,ResourceQuota&quot;
 </code></pre><pre><code>systemctl restart kube-apiserver.service
@@ -650,8 +644,14 @@ pods/nginx
 <pre><code>kubectl get pod nginx
 NAME READY STATUS RESTARTS AGE
 nginx 0/1 Image: nginx is not ready on the node 0 34s
-</code></pre><p>这里STATUS一直是这个，创建不成功，下面排错。通过查看pod的描述发现如下错误：<br>kubectl describe pod nginx<br>Wed, 28 Oct 2015 10:25:30 +0800 Wed, 28 Oct 2015 10:25:30 +0800 1 {kubelet 192.168.1.16} implicitly required container POD pulled Successfully pulled Pod container image “gcr.io/google_containers/pause:0.8.0”<br>Wed, 28 Oct 2015 10:25:30 +0800 Wed, 28 Oct 2015 10:25:30 +0800 1 {kubelet 192.168.1.16} implicitly required container POD failed Failed to create docker container with error: no such image<br>Wed, 28 Oct 2015 10:25:30 +0800 Wed, 28 Oct 2015 10:25:30 +0800 1 {kubelet 192.168.1.16} failedSync Error syncing pod, skipping: no such image<br>Wed, 28 Oct 2015 10:27:30 +0800 Wed, 28 Oct 2015 10:29:30 +0800 2 {kubelet 192.168.1.16} implicitly required container POD failed Failed to pull image “gcr.io/google_containers/pause:0.8.0”: image pull failed for gcr.io/google_containers/pause:0.8.0, this may be because there are no credentials on this request. details: (API error (500): invalid registry endpoint “<a href="http://gcr.io/v0/&quot;" target="_blank" rel="noopener">http://gcr.io/v0/&quot;</a>. HTTPS attempt: unable to ping registry endpoint <a href="https://gcr.io/v0/" target="_blank" rel="noopener">https://gcr.io/v0/</a><br>v2 ping attempt failed with error: Get <a href="https://gcr.io/v2/" target="_blank" rel="noopener">https://gcr.io/v2/</a>: dial tcp 173.194.72.82:443: i/o timeout</p>
-<p>这里可能会遇到pod状态一直处于Penning的问题，此时可以通过kubectl describe pods/pod-name来查看pod信息，如果没有出错信息，那么Minion一直处于下载镜像中，下载好之后pod即会成功启动。</p>
+</code></pre><p>这里STATUS一直是这个，创建不成功，下面排错。通过查看pod的描述发现如下错误：</p>
+<pre><code>kubectl describe pod nginx 
+Wed, 28 Oct 2015 10:25:30 +0800 Wed, 28 Oct 2015 10:25:30 +0800 1 {kubelet 192.168.1.16} implicitly required container POD pulled Successfully pulled Pod container image &quot;gcr.io/google_containers/pause:0.8.0&quot;
+Wed, 28 Oct 2015 10:25:30 +0800 Wed, 28 Oct 2015 10:25:30 +0800 1 {kubelet 192.168.1.16} implicitly required container POD failed Failed to create docker container with error: no such image
+Wed, 28 Oct 2015 10:25:30 +0800 Wed, 28 Oct 2015 10:25:30 +0800 1 {kubelet 192.168.1.16} failedSync Error syncing pod, skipping: no such image
+Wed, 28 Oct 2015 10:27:30 +0800 Wed, 28 Oct 2015 10:29:30 +0800 2 {kubelet 192.168.1.16} implicitly required container POD failed Failed to pull image &quot;gcr.io/google_containers/pause:0.8.0&quot;: image pull failed for gcr.io/google_containers/pause:0.8.0, this may be because there are no credentials on this request. details: (API error (500): invalid registry endpoint &quot;http://gcr.io/v0/&quot;. HTTPS attempt: unable to ping registry endpoint https://gcr.io/v0/
+v2 ping attempt failed with error: Get https://gcr.io/v2/: dial tcp 173.194.72.82:443: i/o timeout
+</code></pre><p>这里可能会遇到pod状态一直处于Penning的问题，此时可以通过kubectl describe pods/pod-name来查看pod信息，如果没有出错信息，那么Minion一直处于下载镜像中，下载好之后pod即会成功启动。</p>
 <p>从网上找到 pause:0.8.0 的镜像，然后再每个node上导入镜像：</p>
 <p>请在境外docker服务器执行 docker pull 命令下载镜像</p>
 <pre><code>gcr.io/google_containers/pause:latest
@@ -696,7 +696,7 @@ gcr.io/google_containers/pause                        0.8.0               bf5953
   <p><strong>本文作者：</strong><a href="/" title="访问 Oliver 的个人博客">Oliver</a></p>
   <!--
   <p><span>发布时间:</span>2018年04月11日 - 16:04</p>
-  <p><span>最后更新:</span>2018年04月11日 - 16:04</p>
+  <p><span>最后更新:</span>2018年04月11日 - 17:04</p>
   -->
   <p><strong>本文链接：</strong><a href="/2018/04/11/centos7-kubernetes-cluser/" title="centos7部署kubernetes-cluser">http://itpai.top/2018/04/11/centos7-kubernetes-cluser/</a>
     <strong class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://itpai.top/2018/04/11/centos7-kubernetes-cluser/"  aria-label="复制成功！"></i></strong>
@@ -977,7 +977,7 @@ gcr.io/google_containers/pause                        0.8.0               bf5953
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、安装前准备"><span class="nav-number">1.</span> <span class="nav-text">一、安装前准备</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-操作系统详情"><span class="nav-number"></span> <span class="nav-text">1.操作系统详情</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-在每台主机上关闭firewalld改用iptables"><span class="nav-number"></span> <span class="nav-text">2.在每台主机上关闭firewalld改用iptables</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-安装ntp服务"><span class="nav-number"></span> <span class="nav-text">3.安装ntp服务</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#二、安装配置"><span class="nav-number">1.</span> <span class="nav-text">二、安装配置</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-安装Kubernetes-Master"><span class="nav-number"></span> <span class="nav-text">1.安装Kubernetes Master</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-安装Kubernetes-Nodes"><span class="nav-number"></span> <span class="nav-text">2.安装Kubernetes Nodes</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#三、创建-Pods-Containers"><span class="nav-number">1.</span> <span class="nav-text">三、创建 Pods (Containers)</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#安装前准备"><span class="nav-number">1.</span> <span class="nav-text">安装前准备</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-操作系统详情"><span class="nav-number">2.</span> <span class="nav-text">1.操作系统详情</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-在每台主机上关闭firewalld改用iptables"><span class="nav-number">3.</span> <span class="nav-text">2.在每台主机上关闭firewalld改用iptables</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-安装ntp服务"><span class="nav-number">4.</span> <span class="nav-text">3.安装ntp服务</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装配置"><span class="nav-number">5.</span> <span class="nav-text">安装配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-安装Kubernetes-Master"><span class="nav-number">6.</span> <span class="nav-text">1.安装Kubernetes Master</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-安装Kubernetes-Nodes"><span class="nav-number">7.</span> <span class="nav-text">2.安装Kubernetes Nodes</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#创建-Pods-Containers"><span class="nav-number">8.</span> <span class="nav-text">创建 Pods (Containers)</span></a></li></ol></div>
             
 
           </div>

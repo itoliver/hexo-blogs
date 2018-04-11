@@ -37,7 +37,8 @@ systemctl start salt-master
 ```
 # 1.5 检查saltstack端口及进程的运行状态
 * 4505是saltstack管理服务器发送命令消息的端口，4506是消息返回时所用的端口，saltstack一般是启动多个进程并发工作的
-```netstat -ntlp|grep python
+```
+netstat -ntlp|grep python
 tcp 0 0 120.76.40.16:4505 0.0.0.0:* LISTEN 4916/python 
 tcp 0 0 120.76.40.16:4506 0.0.0.0:* LISTEN 4936/python
 ```
