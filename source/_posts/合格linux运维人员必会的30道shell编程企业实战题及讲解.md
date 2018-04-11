@@ -11,7 +11,9 @@ comments:
 前言
 本题来自老男孩老师的博客，自己完成解答
 涉及到的题基本上都是在企业实战能遇到的，如果可以自行找出答案，薪资可以翻倍的，哈哈，偏题了呀，下面进入正题……
-# 企业实战题1：监控MySQL主从同步是否异常，如果异常，则发送短信或者邮件给管理员。提示：如果没主从同步环境,可以用下面文本放到文件里读取来模拟：
+
+# 企业实战题1
+监控MySQL主从同步是否异常，如果异常，则发送短信或者邮件给管理员。提示：如果没主从同步环境,可以用下面文本放到文件里读取来模拟：
 阶段1：开发一个守护进程脚本每30秒实现检测一次。
 阶段2：如果同步出现如下错误号（1158,1159,1008,1007,1062），则跳过错误。
 阶段3：请使用数组技术实现上述脚本（获取主从判断及错误号部分）
@@ -59,7 +61,7 @@ Master_SSL_Verify_Server_Cert: No
 ```               
 解答链接：http://www.cnblogs.com/oliver-blogs/p/7715648.html
 
-# 企业实战题2：
+# 企业实战题2
 使用for循环在/oldboy目录下通过随机小写10个字母加固定字符串oldboy批量创建10个html文件，名称例如为：
 ```
 [root@oldboy oldboy]# sh /server/scripts/oldboy.sh
@@ -71,29 +73,31 @@ qcawgsrtkp_oldboy.html  vfrphtqjpc_oldboy.html
 ```
 解答链接：http://www.cnblogs.com/oliver-blogs/p/7715691.html
 
-# 企业实战题3：请用至少两种方法实现！
+# 企业实战题3
+请用至少两种方法实现！
 将以上文件名中的oldboy全部改成oldgirl(用for循环实现),并且html改成大写。
 
 解答链接：http://www.cnblogs.com/oliver-blogs/p/7715719.html
 
-# 企业实战题4：
+# 企业实战题4
 批量创建10个系统帐号oldboy01-oldboy10并设置密码（密码为随机8位字符串）。
 
 解答链接：http://www.cnblogs.com/oliver-blogs/p/7715759.html
 
-# 企业实战题5：
+# 企业实战题5
 写一个脚本，实现判断10.0.0.0/24网络里，当前在线用户的IP有哪些（方法有很多）
 
 解答链接：http://www.cnblogs.com/oliver-blogs/p/7715865.html
 
 
-# 企业实战题6：请用至少两种方法实现！
+# 企业实战题6
+请用至少两种方法实现！
 写一个脚本解决DOS攻击生产案例
 提示：根据web日志或者或者网络连接数，监控当某个IP并发连接数或者短时内PV达到100，即调用防火墙命令封掉对应的IP，监控频率每隔3分钟。防火墙命令为：iptables -I INPUT -s 10.0.1.10 -j DROP。
 
 解答链接：http://www.cnblogs.com/oliver-blogs/p/7716383.html
 
-# 企业实战题7：
+# 企业实战题7
 开发mysql多实例启动脚本：
 已知mysql多实例启动命令为：mysqld_safe--defaults-file=/data/3306/my.cnf &
 停止命令为：mysqladmin -u root -poldboy123 -S /data/3306/mysql.sockshutdown
@@ -104,27 +108,32 @@ qcawgsrtkp_oldboy.html  vfrphtqjpc_oldboy.html
 
  
 
-# 企业实战题8:如何实现对MySQL数据库进行分库备份，请用脚本实现
+# 企业实战题8
+如何实现对MySQL数据库进行分库备份，请用脚本实现
 
 解答链接：http://www.cnblogs.com/oliver-blogs/p/7723324.html
 
 
-# 企业实战题9:如何实现对MySQL数据库进行分库加分表备份，请用脚本实现
+# 企业实战题9
+如何实现对MySQL数据库进行分库加分表备份，请用脚本实现
 
 解答链接：http://www.cnblogs.com/oliver-blogs/p/7723362.html
 
 
-# 实践题10：请用至少两种方法实现！
+# 企业实战题10
+请用至少两种方法实现！
 bash for循环打印下面这句话中字母数不大于6的单词(昆仑万维面试题)。
 I am oldboy teacher welcome to oldboy training class.
 
 解答链接：http://www.cnblogs.com/oliver-blogs/p/7723392.html
 
 
-# 企业实战题11：开发shell脚本分别实现以脚本传参以及read读入的方式比较2个整数大小。以屏幕输出的方式提醒用户比较结果。注意：一共是开发2个脚本。当用脚本传参以及read读入的方式需要对变量是否为数字、并且传参个数做判断。 
+# 企业实战题11
+开发shell脚本分别实现以脚本传参以及read读入的方式比较2个整数大小。以屏幕输出的方式提醒用户比较结果。注意：一共是开发2个脚本。当用脚本传参以及read读入的方式需要对变量是否为数字、并且传参个数做判断。 
 解答链接：http://www.cnblogs.com/oliver-blogs/p/7723559.html
 
-# 企业实战题12：打印选择菜单，一键安装Web服务：
+# 企业实战题12
+打印选择菜单，一键安装Web服务：
 ```
 [root@oldboyscripts]# sh menu.sh
 
@@ -151,7 +160,7 @@ I am oldboy teacher welcome to oldboy training class.
 解答链接：http://www.cnblogs.com/oliver-blogs/p/7723828.html
 
 
-# 企业实战题13：
+# 企业实战题13
 
 1、监控web服务是否正常，不低于3种监控策略。
 
@@ -162,15 +171,18 @@ I am oldboy teacher welcome to oldboy training class.
 
  
 
-# 企业实战题14：监控memcache服务是否正常，模拟用户（web客户端）检测。
+# 企业实战题14
+监控memcache服务是否正常，模拟用户（web客户端）检测。
 
 使用nc命令加上set/get来模拟检测，以及监控响应时间及命中率。
 
 
-# 企业实战题15：面试及实战考试题：监控web站点目录（/var/html/www）下所有文件是否被恶意篡改（文件内容被改了），如果有就打印改动的文件名（发邮件），定时任务每3分钟执行一次(10分钟时间完成)。
+# 企业实战题15
+面试及实战考试题：监控web站点目录（/var/html/www）下所有文件是否被恶意篡改（文件内容被改了），如果有就打印改动的文件名（发邮件），定时任务每3分钟执行一次(10分钟时间完成)。
  
 
-# 企业实战题16：企业案例:写网络服务独立进程模式下rsync的系统启动脚本
+# 企业实战题16
+企业案例:写网络服务独立进程模式下rsync的系统启动脚本
 
 例如：/etc/init.d/rsyncd{start|stop|restart} 。
 要求：
@@ -180,7 +192,8 @@ I am oldboy teacher welcome to oldboy training class.
 
  
 
-# 企业实战题17：老男孩教育天津项目学生实践抓阄题目：
+# 企业实战题17
+老男孩教育天津项目学生实践抓阄题目：
 
 好消息，老男孩培训学生外出企业项目实践机会（第6次）来了（本月中旬），但是，名额有限，队员限3人（班长带队）。
 
@@ -195,7 +208,8 @@ I am oldboy teacher welcome to oldboy training class.
 
  
 
-# 企业实战题18：老男孩linux实践题：
+# 企业实战题18
+老男孩linux实践题：
 
 已知下面的字符串是通过RANDOM随机数变量md5sum|cut-c 1-8截取后的结果，请破解这些字符串对应的md5sum前的RANDOM对应数字？
 
@@ -211,7 +225,8 @@ a3da1677
 
  
 
-# 企业实战题19：批量检查多个网站地址是否正常 
+# 企业实战题19
+批量检查多个网站地址是否正常 
 
 要求：shell数组方法实现，检测策略尽量模拟用户访问思路
 
@@ -225,7 +240,8 @@ http://10.0.0.7
 
  
 
-# 企业实战题20(中企动力)：：用shell处理以下内容
+# 企业实战题20
+(中企动力)：：用shell处理以下内容
 
 1、按单词出现频率降序排序！
 
@@ -233,26 +249,27 @@ http://10.0.0.7
 
 the squid project provides a number of resources toassist users design,implement and support squid installations. Please browsethe documentation and support sections for more infomation
 
-# 企业实战题21:输出正方形、等腰三角形、直角梯形，见如下内容
+# 企业实战题21
+输出正方形、等腰三角形、直角梯形，见如下内容
 
-(http://oldboy.blog.51cto.com/2561410/1718607)
+http://oldboy.blog.51cto.com/2561410/1718607
 
  
 
-# 企业实战题22:开发通过web界面展示监控Nginx代理节点状态，效果图如下。
-
-![Image text](http://s2.51cto.com/wyfs02/M01/78/22/wKioL1Z2j3nCbtimAADO--T7ahw342.jpg)
+# 企业实战题22
+开发通过web界面展示监控Nginx代理节点状态，效果图如下。
+![22 img](../../../../img/wKioL1Z2j3nCbtimAADO--T7ahw342.jpg)
 
 
 lvs+keepalived集群部分Shell企业案例：
 
-# 企业实战题23、【LVS主节点】手工开发ipvsadm管理lvs的脚本ip_vs
-
+# 企业实战题23
+【LVS主节点】手工开发ipvsadm管理lvs的脚本ip_vs
  实现：/etc/init.d/lvs {start|stop|restart}
 
  
-
-# 企业实战题24、【LVS主节点】模拟keepalived健康检查功能管理LVS节点，
+# 企业实战题24
+【LVS主节点】模拟keepalived健康检查功能管理LVS节点，
 
 当节点挂掉（检测2次，间隔2秒）从服务器池中剔除，好了（检测2次，间隔2秒）加进来
 
@@ -260,15 +277,17 @@ lvs+keepalived集群部分Shell企业案例：
 
  
 
-# 企业实战题25、【LVS客户端节点】开发LVS客户端设置VIP以及抑制ARP的管理脚本
+# 企业实战题25
+LVS客户端节点】开发LVS客户端设置VIP以及抑制ARP的管理脚本
 
     实现：/etc/init.d/lvsclient {start|stop|restart}
 
-实践题26、【LVS备节点】模拟keepalved vrrp功能，监听主节点，如果主节点不可访问则备节点启动并配置LVS实现接管主节点的资源提供服务（提醒：注意ARP缓存） 
+# 企业实战题26
+【LVS备节点】模拟keepalved vrrp功能，监听主节点，如果主节点不可访问则备节点启动并配置LVS实现接管主节点的资源提供服务（提醒：注意ARP缓存） 
 
  
-
-# 企业实战题27、请用shell或Python编写一个正方形(oldboy_square.sh)，接收用户输入的数字。
+# 企业实战题27
+请用shell或Python编写一个正方形(oldboy_square.sh)，接收用户输入的数字。
 
 例如：
 ```
@@ -291,7 +310,8 @@ Please Enter a number:9
 ■■■■■■■■■
 ■■■■■■■■■
 ```
-# 企业实战题28、请用shell或Python编写一个等腰三角形(oldboy2_triangle.sh)，接收用户输入的数字。
+# 企业实战题28
+请用shell或Python编写一个等腰三角形(oldboy2_triangle.sh)，接收用户输入的数字。
 
 例如：
 ```
@@ -314,7 +334,8 @@ Please Enter a number:8
 ***************
 ```
 
-# 企业实战题29、请用shell或Python编写一个画直角梯形程序(oldboy4.sh)，接收用户输入的参数n，m
+# 企业实战题29
+请用shell或Python编写一个画直角梯形程序(oldboy4.sh)，接收用户输入的参数n，m
 
 例如：
 ```
@@ -326,8 +347,10 @@ Please Enter a number:8
 ```
  
 
-# 企业实战题30:写一套简单的企业代码上线发布系统案例，利用SVN对代码及配置文件进行管理，在办公室服务器上从svn取出指定版本的代码和配置，发布到IDC机房分发机服务器上，在分发服务器或者负载均衡器上或者应用服务器本地实现代码平滑发布、上线、回滚脚本（具体设计请参考课堂讲解的企业代码发布方案）。
+# 企业实战题30
+写一套简单的企业代码上线发布系统案例，利用SVN对代码及配置文件进行管理，在办公室服务器上从svn取出指定版本的代码和配置，发布到IDC机房分发机服务器上，在分发服务器或者负载均衡器上或者应用服务器本地实现代码平滑发布、上线、回滚脚本（具体设计请参考课堂讲解的企业代码发布方案）。
 
  
 
-# 企业实战题31:请设计一套Git+Saltstack实现代码的线上发布及管理方案。
+# 企业实战题31
+请设计一套Git+Saltstack实现代码的线上发布及管理方案。
