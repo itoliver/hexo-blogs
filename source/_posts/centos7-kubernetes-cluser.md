@@ -26,7 +26,7 @@ kube-proxy：实现Service的通信与负载均衡机制的重要组件，老版
 Docker Engine：Docker引擎，负责Docker的生命周期管理。
 <!--more-->
 # 安装前准备
-# 1.操作系统详情
+# 操作系统详情
 需要三台主机，都最小化安装 centos7.3,并update到最新
 ```
 [root@master ~]# cat /etc/redhat-release 
@@ -36,7 +36,7 @@ Master  master  192.168.1.14
 node1  slave-1  192.168.1.15
 node2  slave-2  192.168.1.16
 ```
-# 2.在每台主机上关闭firewalld改用iptables
+# 在每台主机上关闭firewalld改用iptables
 输入以下命令，关闭firewalld
 ```
 systemctl stop firewalld.service #停止firewall 
@@ -45,7 +45,7 @@ yum install iptables-* -y
 systemctl start iptables.service
 systemctl enable iptables.service
 ```
-# 3.安装ntp服务
+# 安装ntp服务
 ```
 yuminstall -y ntp wget net-tools 
 systemctl start ntpd systemctl enable ntpd
@@ -53,7 +53,7 @@ systemctl start ntpd systemctl enable ntpd
 # 安装配置
 注：kubernetes，etcd等已经进去centos epel源，可以直接yum安装（需要安装epel-release）
 
-# 1.安装Kubernetes Master
+# 安装Kubernetes Master
 使用以下命令安装kubernetes 和 etcd
 ```
 yum install -y kubernetes etcd
@@ -132,7 +132,7 @@ iptables-save
 kubectl get nodes
 NAME LABELS STATUS
 ```
-# 2.安装Kubernetes Nodes
+# 安装Kubernetes Nodes
 注：下面这些步骤应该在node1和node2上执行（也可以添加更多的node）
 
 使用yum安装kubernetes 和 flannel

@@ -113,7 +113,7 @@
 <meta property="og:site_name" content="Oliver&#39;s Blog">
 <meta property="og:description" content="前言Kubernetes是Google开源的容器集群管理系统，其提供应用部署、维护、 扩展机制等功能，利用Kubernetes能方便地管理跨机器运行容器化的应用，是Docker分布式系统的解决方案。k8s里所有的资源都可以用yaml或Json定义。K8s基本概念 MasterMaster节点负责整个集群的控制和管理，所有的控制命令都是发给它，上面运行着一组关键进程：kube-apiserver：提">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-11T09:01:17.333Z">
+<meta property="og:updated_time" content="2018-04-11T09:04:01.444Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="centos7部署kubernetes-cluser">
 <meta name="twitter:description" content="前言Kubernetes是Google开源的容器集群管理系统，其提供应用部署、维护、 扩展机制等功能，利用Kubernetes能方便地管理跨机器运行容器化的应用，是Docker分布式系统的解决方案。k8s里所有的资源都可以用yaml或Json定义。K8s基本概念 MasterMaster节点负责整个集群的控制和管理，所有的控制命令都是发给它，上面运行着一组关键进程：kube-apiserver：提">
@@ -449,7 +449,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,048
+                  2,043
                 </span>
               
 
@@ -489,23 +489,23 @@
         <p>前言<br>Kubernetes是Google开源的容器集群管理系统，其提供应用部署、维护、 扩展机制等功能，利用Kubernetes能方便地管理跨机器运行容器化的应用，是Docker分布式系统的解决方案。k8s里所有的资源都可以用yaml或Json定义。<br>K8s基本概念</p>
 <p>Master<br>Master节点负责整个集群的控制和管理，所有的控制命令都是发给它，上面运行着一组关键进程：<br>kube-apiserver：提供了HTTP REST接口，是k8s所有资源增删改查等操作的唯一入口，也是集群控制的入口。<br>kube-controller-manager：所有资源的自动化控制中心。当集群状态与期望不同时，kcm会努力让集群恢复期望状态，比如：当一个pod死掉，kcm会努力新建一个pod来恢复对应replicas set期望的状态。<br>kube-scheduler：负责Pod的调度。<br>实际上，Master只是一个名义上的概念，三个关键的服务不一定需要运行在一个节点上。</p>
 <p>Node<br>Node是工作负载节点，运行着Master分配的负载（Pod），但一个Node宕机时，其上的负载会被自动转移到其他Node上。其上运行的关键组件是：<br>kubelet：负责Pod的生命周期管理，同时与Master密切协作，实现集群管理的基本功能。<br>kube-proxy：实现Service的通信与负载均衡机制的重要组件，老版本主要通过设置iptables规则实现，新版1.9基于kube-proxy-lvs 实现。<br>Docker Engine：Docker引擎，负责Docker的生命周期管理。<br><a id="more"></a></p>
-<h1 id="安装前准备"><a href="#安装前准备" class="headerlink" title="安装前准备"></a>安装前准备</h1><h1 id="1-操作系统详情"><a href="#1-操作系统详情" class="headerlink" title="1.操作系统详情"></a>1.操作系统详情</h1><p>需要三台主机，都最小化安装 centos7.3,并update到最新</p>
+<h1 id="安装前准备"><a href="#安装前准备" class="headerlink" title="安装前准备"></a>安装前准备</h1><h1 id="操作系统详情"><a href="#操作系统详情" class="headerlink" title="操作系统详情"></a>操作系统详情</h1><p>需要三台主机，都最小化安装 centos7.3,并update到最新</p>
 <pre><code>[root@master ~]# cat /etc/redhat-release 
 CentOS Linux release 7.3.1611 (Core)
 角色       主机名         IP
 Master  master  192.168.1.14
 node1  slave-1  192.168.1.15
 node2  slave-2  192.168.1.16
-</code></pre><h1 id="2-在每台主机上关闭firewalld改用iptables"><a href="#2-在每台主机上关闭firewalld改用iptables" class="headerlink" title="2.在每台主机上关闭firewalld改用iptables"></a>2.在每台主机上关闭firewalld改用iptables</h1><p>输入以下命令，关闭firewalld</p>
+</code></pre><h1 id="在每台主机上关闭firewalld改用iptables"><a href="#在每台主机上关闭firewalld改用iptables" class="headerlink" title="在每台主机上关闭firewalld改用iptables"></a>在每台主机上关闭firewalld改用iptables</h1><p>输入以下命令，关闭firewalld</p>
 <pre><code>systemctl stop firewalld.service #停止firewall 
 systemctl disable firewalld.service #禁止firewall开机启动
 yum install iptables-* -y
 systemctl start iptables.service
 systemctl enable iptables.service
-</code></pre><h1 id="3-安装ntp服务"><a href="#3-安装ntp服务" class="headerlink" title="3.安装ntp服务"></a>3.安装ntp服务</h1><pre><code>yuminstall -y ntp wget net-tools 
+</code></pre><h1 id="安装ntp服务"><a href="#安装ntp服务" class="headerlink" title="安装ntp服务"></a>安装ntp服务</h1><pre><code>yuminstall -y ntp wget net-tools 
 systemctl start ntpd systemctl enable ntpd
 </code></pre><h1 id="安装配置"><a href="#安装配置" class="headerlink" title="安装配置"></a>安装配置</h1><p>注：kubernetes，etcd等已经进去centos epel源，可以直接yum安装（需要安装epel-release）</p>
-<h1 id="1-安装Kubernetes-Master"><a href="#1-安装Kubernetes-Master" class="headerlink" title="1.安装Kubernetes Master"></a>1.安装Kubernetes Master</h1><p>使用以下命令安装kubernetes 和 etcd</p>
+<h1 id="安装Kubernetes-Master"><a href="#安装Kubernetes-Master" class="headerlink" title="安装Kubernetes Master"></a>安装Kubernetes Master</h1><p>使用以下命令安装kubernetes 和 etcd</p>
 <pre><code>yum install -y kubernetes etcd
 </code></pre><p>编辑/etc/etcd/etcd.conf 使etcd监听所有的ip地址，确保下列行没有注释，并修改为下面的值</p>
 <pre><code>cat /etc/etcd/etcd.conf 
@@ -561,7 +561,7 @@ iptables -I INPUT -p tcp --dport 8080 -j ACCEPT
 <p>查看节点信息（我们还没有配置节点信息，所以这里应该为空）</p>
 <pre><code>kubectl get nodes
 NAME LABELS STATUS
-</code></pre><h1 id="2-安装Kubernetes-Nodes"><a href="#2-安装Kubernetes-Nodes" class="headerlink" title="2.安装Kubernetes Nodes"></a>2.安装Kubernetes Nodes</h1><p>注：下面这些步骤应该在node1和node2上执行（也可以添加更多的node）</p>
+</code></pre><h1 id="安装Kubernetes-Nodes"><a href="#安装Kubernetes-Nodes" class="headerlink" title="安装Kubernetes Nodes"></a>安装Kubernetes Nodes</h1><p>注：下面这些步骤应该在node1和node2上执行（也可以添加更多的node）</p>
 <p>使用yum安装kubernetes 和 flannel</p>
 <pre><code>yum install -y flannel kubernetes
 </code></pre><p>为flannel service配置etcd服务器，编辑/etc/sysconfig/flanneld文件中的下列行以连接到master</p>
@@ -977,7 +977,7 @@ gcr.io/google_containers/pause                        0.8.0               bf5953
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#安装前准备"><span class="nav-number">1.</span> <span class="nav-text">安装前准备</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-操作系统详情"><span class="nav-number">2.</span> <span class="nav-text">1.操作系统详情</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-在每台主机上关闭firewalld改用iptables"><span class="nav-number">3.</span> <span class="nav-text">2.在每台主机上关闭firewalld改用iptables</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-安装ntp服务"><span class="nav-number">4.</span> <span class="nav-text">3.安装ntp服务</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装配置"><span class="nav-number">5.</span> <span class="nav-text">安装配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-安装Kubernetes-Master"><span class="nav-number">6.</span> <span class="nav-text">1.安装Kubernetes Master</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-安装Kubernetes-Nodes"><span class="nav-number">7.</span> <span class="nav-text">2.安装Kubernetes Nodes</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#创建-Pods-Containers"><span class="nav-number">8.</span> <span class="nav-text">创建 Pods (Containers)</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#安装前准备"><span class="nav-number">1.</span> <span class="nav-text">安装前准备</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#操作系统详情"><span class="nav-number">2.</span> <span class="nav-text">操作系统详情</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#在每台主机上关闭firewalld改用iptables"><span class="nav-number">3.</span> <span class="nav-text">在每台主机上关闭firewalld改用iptables</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装ntp服务"><span class="nav-number">4.</span> <span class="nav-text">安装ntp服务</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装配置"><span class="nav-number">5.</span> <span class="nav-text">安装配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装Kubernetes-Master"><span class="nav-number">6.</span> <span class="nav-text">安装Kubernetes Master</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装Kubernetes-Nodes"><span class="nav-number">7.</span> <span class="nav-text">安装Kubernetes Nodes</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#创建-Pods-Containers"><span class="nav-number">8.</span> <span class="nav-text">创建 Pods (Containers)</span></a></li></ol></div>
             
 
           </div>
