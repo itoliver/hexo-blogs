@@ -2,7 +2,7 @@
 title: centos7部署kubernetes-cluser
 date: 2018-04-11 16:29:18
 description:
-categories: [Docker, Linux自动化建设]
+categories: Docker
 tags: [docker, kubernetes, linux自动化运维]
 copyright: true
 password:
